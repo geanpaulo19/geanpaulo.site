@@ -483,15 +483,21 @@ body.dark-mode .navbar {
   color: var(--fg);
 }
 
-/* Navbar emoji */
-.navbar .nav-emoji {
-  font-size: 1.8rem;
+/* Navbar logo */
+.navbar .nav-logo {
+  width: 1.8rem; /* same as the emoji font-size */
+  height: auto;
   cursor: default;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.5s ease;
 }
 
-.navbar .nav-emoji:hover {
+.navbar .nav-logo:hover {
   transform: scale(1.2);
+}
+
+/* Light mode: invert the white SVG to black */
+body.light-mode .nav-logo {
+  filter: invert(1);
 }
 
 /* ---------- HELLO ROTATING ---------- */
