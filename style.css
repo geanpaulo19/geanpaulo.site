@@ -43,15 +43,35 @@ body {
 }
 
 /* ---------- HERO ---------- */
+.hero {
+  text-align: center;
+  padding-top: 5rem; /* adjusted top padding for navbar */
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 5.5rem; /* slightly taller for mobile navbar */
+  }
+}
+
 .hero h1 {
   font-size: clamp(3.5rem, 8vw, 5.5rem);
   letter-spacing: -0.04em;
   margin: 0;
 }
 
-.hero p {
-  max-width: 520px;
-  margin-top: 1.5rem;
+.hero p,
+.hero-about,
+.hero-quote {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--muted);
@@ -59,12 +79,9 @@ body {
 }
 
 .hero-about {
-  max-width: 600px;
   margin-top: 1.5rem;
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--muted);
-  transition: color 0.5s ease;
 }
 
 .hero-icon {
@@ -82,6 +99,7 @@ body {
 .status-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
@@ -114,7 +132,6 @@ body {
   50% { opacity: 0.4; }
 }
 
-/* Button row */
 .status-actions {
   display: flex;
   gap: 0.6rem;
@@ -142,19 +159,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Mobile behavior */
-@media (max-width: 600px) {
-  .status-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .status-actions {
-    width: 100%;
-    flex-direction: row;
-  }
-}
-
 /* ---------- WORK ---------- */
 .work {
   margin-top: 6rem;
@@ -164,6 +168,7 @@ body {
   font-size: 2rem;
   margin-bottom: 2.5rem;
   transition: color 0.5s ease;
+  text-align: center;
 }
 
 /* ---------- PROJECT GRID ---------- */
@@ -256,6 +261,7 @@ body {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  justify-content: center;
 }
 
 .project-filter button {
@@ -307,10 +313,40 @@ footer {
   color: var(--muted);
 }
 
+/* ---------- RESPONSIVE MOBILE ---------- */
 @media (max-width: 600px) {
   footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .status-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-actions {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .hero {
+    text-align: left;
+  }
+
+  .hero p,
+  .hero-about,
+  .hero-quote {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .work h2 {
+    text-align: left;
+  }
+
+  .project-filter {
+    justify-content: flex-start;
   }
 }
 
@@ -398,4 +434,126 @@ body.light-mode .status-pill {
   color: var(--muted);
   margin-top: 0.5rem;
   font-style: italic;
+}
+
+/* ---------- NAVBAR (NARROW PILL, THEME-AWARE) ---------- */
+.navbar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 46%;
+  max-width: 380px;
+  padding: 0.55rem 1rem;
+  background: rgba(14, 14, 17, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 999px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  z-index: 1001;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease;
+  color: var(--fg);
+}
+
+body.light-mode .navbar {
+  background: rgba(245, 245, 247, 0.85);
+  color: var(--fg);
+}
+
+body.dark-mode .navbar {
+  background: rgba(14, 14, 17, 0.85);
+  color: var(--fg);
+}
+
+/* Navbar emoji */
+.navbar .nav-emoji {
+  font-size: 1.8rem;
+  cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.navbar .nav-emoji:hover {
+  transform: scale(1.2);
+}
+
+/* ---------- HELLO ROTATING ---------- */
+.nav-hello {
+  display: inline-block;
+  margin-left: 0.6rem;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--fg);
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: color 0.5s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-hello.animate {
+  transform: scale(1.2);
+}
+
+/* Mode toggle inside navbar */
+.navbar .mode-toggle {
+  margin: 0;
+  padding: 0.35rem 0.6rem;
+  font-size: 1.05rem;
+  top: auto;
+  right: auto;
+  position: relative;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar .mode-toggle:hover {
+  background: var(--fg);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+
+/* ---------- TABLET / LAPTOP ---------- */
+@media (max-width: 1024px) {
+  .navbar {
+    width: 55%;
+    max-width: 340px;
+    padding: 0.5rem 0.9rem;
+  }
+  .navbar .nav-emoji {
+    font-size: 1.6rem;
+  }
+  .navbar .mode-toggle {
+    font-size: 1rem;
+    padding: 0.35rem 0.55rem;
+  }
+  .nav-hello {
+    font-size: 0.95rem;
+    margin-left: 0.5rem;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .navbar {
+    width: calc(100% - 3rem);
+    max-width: none;
+    padding: 0.55rem 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+  }
+  .navbar .nav-emoji {
+    font-size: 1.4rem;
+  }
+  .nav-hello {
+    font-size: 0.9rem;
+    margin-left: 0.45rem;
+  }
+  .navbar .mode-toggle {
+    font-size: 0.95rem;
+    padding: 0.35rem 0.55rem;
+  }
 }
