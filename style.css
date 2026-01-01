@@ -428,3 +428,12 @@ body.light-mode .contact-btn {
   border-color: var(--accent);
   background: rgba(139, 139, 255, 0.3);
 }
+
+.hero-quote {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+  line-height: 1.4;
+  transition: color 0.5s ease;
+}
