@@ -325,3 +325,44 @@ function rotateGreeting() {
 // initialize
 rotateGreeting();
 setInterval(rotateGreeting, 5000); // slower rotation (every 5s)
+
+document.addEventListener("DOMContentLoaded", () => {
+  const footnotes = [
+  "From Manila, with ❤️… and a bit of chaos 💻",
+  "Powered by coffee ☕ and occasional panic!",
+  "Debugging is my cardio 🏃‍♂️",
+  "100% chaos, 0% boredom 🎉",
+  "Made with love and mild insomnia 🌙",
+  "Keyboard warrior by day, nap enthusiast by night 😴",
+  "Turning bugs into features… sometimes 🐛➡️✨",
+  "Will code for tacos 🌮",
+  "Ctrl + S is my life mantra 💾",
+  "Procrastination level: expert 🕰️",
+  "Powered by caffeine, curiosity, and chaos ⚡",
+  "Pixel perfectionist with slight OCD 🎨",
+  "Errors? Just unexpected learning opportunities 🤓",
+  "Coffee in one hand, code in the other ☕💻",
+  "If it works, it works… if not, debug harder 🔧"
+];
+
+  let index = 0;
+  const footerSpan = document.querySelector(".footer-rotate");
+
+  if (!footerSpan) return; // extra safety
+
+  setInterval(() => {
+    // Fade out
+    footerSpan.style.opacity = 0;
+    footerSpan.style.transform = "translateY(-5px)";
+
+    setTimeout(() => {
+      // Change text
+      index = (index + 1) % footnotes.length;
+      footerSpan.textContent = footnotes[index];
+
+      // Fade in
+      footerSpan.style.opacity = 1;
+      footerSpan.style.transform = "translateY(0)";
+    }, 500); // match transition duration
+  }, 5000); // rotate every 5 seconds
+});
