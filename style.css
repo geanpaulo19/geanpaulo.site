@@ -429,6 +429,13 @@ body.light-mode .contact-btn {
   background: rgba(139, 139, 255, 0.3);
 }
 
+/* Hide custom cursor by default on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  #custom-cursor {
+    display: none !important;
+  }
+}
+
 .hero-quote {
   font-size: 0.85rem;
   color: var(--muted);
