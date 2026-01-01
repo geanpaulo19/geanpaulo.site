@@ -101,3 +101,30 @@ fetch('projects.json')
       });
     });
   });
+
+// CUSTOM CIRCLE CURSOR
+const cursor = document.createElement('div');
+cursor.classList.add('cursor');
+document.body.appendChild(cursor);
+
+// Update cursor position
+document.addEventListener('mousemove', (e) => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
+
+// Hover effect on clickable elements
+const hoverElements = ['a', '.contact-btn', '.project-link', '.mode-toggle', '.project-filter button'];
+hoverElements.forEach(selector => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+});
+
+// Click effect
+document.addEventListener('mousedown', () => cursor.classList.add('click'));
+document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+// Hide default cursor
+document.body.style.cursor = 'none';
