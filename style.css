@@ -399,3 +399,32 @@ body.light-mode .contact-btn {
   background: var(--accent);
   color: var(--bg);
 }
+
+/* Custom Circle Cursor */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, background 0.15s ease, width 0.15s ease, height 0.15s ease, border-color 0.15s ease;
+  z-index: 9999;
+}
+
+/* Hover enlarge effect */
+.cursor.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  border-color: var(--fg);
+  background: rgba(139, 139, 255, 0.2);
+}
+
+/* Click pulse effect */
+.cursor.click {
+  transform: translate(-50%, -50%) scale(0.8);
+  border-color: var(--accent);
+  background: rgba(139, 139, 255, 0.3);
+}
