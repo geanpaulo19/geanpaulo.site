@@ -128,3 +128,57 @@ document.addEventListener('mouseup', () => cursor.classList.remove('click'));
 
 // Hide default cursor
 document.body.style.cursor = 'none';
+
+// --- Quote of the Day ---
+const heroAbout = document.querySelector('.hero-about');
+
+fetch('https://proxy.geanpaulofrancois.workers.dev/')
+  .then(res => res.json())
+  .then(data => {
+    const quoteText = data.text || 'Stay motivated!';
+    const quoteAuthor = data.author ? ` — ${data.author}` : '';
+
+    // Remove existing quote or title if present
+    const existingQuote = document.querySelector('.hero-quote');
+    const existingTitle = document.querySelector('.hero-quote-title');
+    if (existingQuote) existingQuote.remove();
+    if (existingTitle) existingTitle.remove();
+
+    // Create title
+    const titleElem = document.createElement('p');
+    titleElem.className = 'hero-quote-title fade';
+    titleElem.textContent = 'Quote for the day';
+    titleElem.style.fontSize = '0.8rem';
+    titleElem.style.fontWeight = '600';
+    titleElem.style.color = '#8b8bff';
+    titleElem.style.marginTop = '1.5rem';
+    titleElem.style.marginBottom = '0.25rem';
+    titleElem.style.opacity = '0';
+    titleElem.style.transform = 'translateY(20px)';
+    titleElem.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+
+    // Create quote element
+    const quoteElem = document.createElement('p');
+    quoteElem.className = 'hero-quote fade';
+    quoteElem.textContent = quoteText + quoteAuthor;
+    quoteElem.style.fontSize = '0.85rem';
+    quoteElem.style.fontStyle = 'italic';
+    quoteElem.style.color = '#9a9aa3';
+    quoteElem.style.margin = '0';
+    quoteElem.style.opacity = '0';
+    quoteElem.style.transform = 'translateY(20px)';
+    quoteElem.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s'; // delay for stagger
+
+    // Insert after hero-about
+    heroAbout.insertAdjacentElement('afterend', titleElem);
+    titleElem.insertAdjacentElement('afterend', quoteElem);
+
+    // Trigger fade-in animation
+    requestAnimationFrame(() => {
+      titleElem.style.opacity = '1';
+      titleElem.style.transform = 'translateY(0)';
+      quoteElem.style.opacity = '1';
+      quoteElem.style.transform = 'translateY(0)';
+    });
+  })
+  .catch(err => console.error('Quote fetch error:', err));
