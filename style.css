@@ -397,13 +397,29 @@ body.light-mode {
   --accent: #8b8bff;
 }
 
+/* Light mode project background */
 body.light-mode .project {
   background: rgba(0,0,0,0.05);
 }
 
+/* Light mode status pill */
 body.light-mode .status-pill {
   background: rgba(0,255,0,0.15);
   color: #0a0;
+}
+
+/* Light mode project filter buttons match project card background */
+body.light-mode .project-filter button {
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+  color: var(--muted);
+}
+
+body.light-mode .project-filter button:hover,
+body.light-mode .project-filter button.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
 }
 
 /* ---------- CUSTOM CURSOR ---------- */
