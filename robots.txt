@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://geanpaulo.site/sitemap.xml
+Sitemap: https://geanpaulo.com/sitemap.xml
