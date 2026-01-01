@@ -284,13 +284,16 @@ body {
 
 /* ---------- FOOTER ---------- */
 footer {
-  margin-top: 6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* faint line in dark mode */
+  padding-top: 1.5rem; /* spacing above the line */
+  margin-top: 0;        /* remove extra margin; spacing controlled by CTA bottom */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
   font-size: 0.95rem;
+  transition: border-color 0.5s ease;
 }
 
 .footer-links {
@@ -637,4 +640,119 @@ body.light-mode .nav-logo {
     width: 18px;
     height: 18px;
   }
+}
+
+/* ================= CALL TO ACTION ================= */
+.cta-section {
+  margin-top: 6rem;
+  margin-bottom: 2rem; /* reduce gap to footer */
+  display: flex;
+  justify-content: center;
+}
+
+.cta-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: row; /* two-column layout */
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px; /* match .wrap container width */
+  transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.cta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+.cta-text {
+  flex: 1;
+  text-align: left;
+}
+
+.cta-text h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  transition: color 0.5s ease;
+}
+
+.cta-text p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  transition: color 0.5s ease;
+}
+
+.cta-action {
+  flex-shrink: 0;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+
+/* Light mode CTA card background (match project cards) */
+body.light-mode .cta-card {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--fg);
+}
+
+/* ---------- RESPONSIVE MOBILE ---------- */
+@media (max-width: 768px) {
+  .cta-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .cta-text {
+    text-align: center;
+  }
+
+  .cta-action {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* ---------- FOOTER DIVIDER ---------- */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* faint line in dark mode */
+  padding-top: 1.5rem; /* optional, for spacing above the line */
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: border-color 0.5s ease;
+}
+
+/* Light mode divider */
+body.light-mode footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* subtle in light mode */
 }
