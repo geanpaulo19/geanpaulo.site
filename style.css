@@ -756,3 +756,9 @@ footer {
 body.light-mode footer {
   border-top: 1px solid rgba(0, 0, 0, 0.1); /* subtle in light mode */
 }
+
+.footer-rotate {
+  display: inline-block;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+}
