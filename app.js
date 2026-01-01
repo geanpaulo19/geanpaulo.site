@@ -102,32 +102,38 @@ fetch('projects.json')
     });
   });
 
-// CUSTOM CIRCLE CURSOR
-const cursor = document.createElement('div');
-cursor.classList.add('cursor');
-document.body.appendChild(cursor);
+// --- CUSTOM CIRCLE CURSOR ---
+// Only on hover-capable devices
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
 
-// Update cursor position
-document.addEventListener('mousemove', (e) => {
-  cursor.style.top = `${e.clientY}px`;
-  cursor.style.left = `${e.clientX}px`;
-});
-
-// Hover effect on clickable elements
-const hoverElements = ['a', '.contact-btn', '.project-link', '.mode-toggle', '.project-filter button'];
-hoverElements.forEach(selector => {
-  document.querySelectorAll(selector).forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  // Update cursor position
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.top = `${e.clientY}px`;
+    cursor.style.left = `${e.clientX}px`;
   });
-});
 
-// Click effect
-document.addEventListener('mousedown', () => cursor.classList.add('click'));
-document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+  // Hover effect on clickable elements
+  const hoverElements = ['a', '.contact-btn', '.project-link', '.mode-toggle', '.project-filter button'];
+  hoverElements.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  });
 
-// Hide default cursor
-document.body.style.cursor = 'none';
+  // Click effect
+  document.addEventListener('mousedown', () => cursor.classList.add('click'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+  // Hide default cursor
+  document.body.style.cursor = 'none';
+} else {
+  // On touch devices, show normal cursor
+  document.body.style.cursor = 'auto';
+}
 
 // --- Quote of the Day ---
 const heroAbout = document.querySelector('.hero-about');
