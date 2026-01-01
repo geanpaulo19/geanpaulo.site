@@ -1,36 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ================= BASIC ================= -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gean Paulo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  <title>Gean Paulo | Web Designer & Front-End Developer</title>
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://geanpaulo.com/">
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://geanpaulo.com/" />
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Hi, I'm Gean Paulo — a web designer and developer crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design.">
-  <meta name="keywords" content="Gean Paulo, web developer, web designer, JavaScript, React, UI/UX, front-end development, portfolio">
-  <meta name="author" content="Gean Paulo">
-  <meta name="robots" content="index, follow">
+  <!-- ================= FAVICON ================= -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
+  />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Gean Paulo — Web Designer & Developer">
-  <meta property="og:description" content="Crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://geanpaulo.com/">
-  <meta property="og:image" content="https://geanpaulo.com/assets/images/hero.jpg">
+  <!-- ================= SEO META ================= -->
+  <meta
+    name="description"
+    content="Gean Paulo is a web designer and front-end developer specializing in modern, interactive, and user-friendly web experiences using JavaScript, HTML, CSS, UI/UX, and WordPress."
+  />
+  <meta
+    name="keywords"
+    content="Gean Paulo, web designer, front-end developer, JavaScript developer, UI UX designer, portfolio, HTML CSS, WordPress developer"
+  />
+  <meta name="author" content="Gean Paulo" />
+  <meta name="robots" content="index, follow" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gean Paulo — Web Designer & Developer">
-  <meta name="twitter:description" content="Crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design.">
-  <meta name="twitter:image" content="https://geanpaulo.com/assets/images/hero.jpg">
+  <!-- ================= OPEN GRAPH ================= -->
+  <meta property="og:site_name" content="Gean Paulo Portfolio" />
+  <meta property="og:title" content="Gean Paulo | Web Designer & Front-End Developer" />
+  <meta
+    property="og:description"
+    content="Designing and building modern, interactive, and user-friendly web experiences with clarity, motion, and purpose."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://geanpaulo.com/" />
+  <meta property="og:image" content="https://geanpaulo.com/assets/images/hero.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-  <!-- Structured Data -->
+  <!-- ================= TWITTER ================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gean Paulo | Web Designer & Front-End Developer" />
+  <meta
+    name="twitter:description"
+    content="Designing and building modern, interactive, and user-friendly web experiences with clarity, motion, and purpose."
+  />
+  <meta name="twitter:image" content="https://geanpaulo.com/assets/images/hero.jpg" />
+
+  <!-- ================= STRUCTURED DATA ================= -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,106 +59,133 @@
     "name": "Gean Paulo",
     "url": "https://geanpaulo.com/",
     "image": "https://geanpaulo.com/assets/images/hero.jpg",
+    "jobTitle": "Web Designer & Front-End Developer",
+    "description": "Web designer and front-end developer creating modern, interactive, and user-friendly web experiences.",
     "sameAs": [
       "https://github.com/geanpaulo19",
       "https://www.facebook.com/geanpaulofrancois/",
       "https://x.com/geanpaulo_",
       "https://www.instagram.com/geanpau.lo/",
       "https://geanpaulo.link"
-    ],
-    "jobTitle": "Web Designer & Developer",
-    "description": "Crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design."
+    ]
   }
   </script>
 
+  <!-- ================= STYLES ================= -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <!-- ================= NAV ================= -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <img
+      src="assets/images/logo.svg"
+      alt="Gean Paulo logo"
+      class="nav-logo"
+      width="32"
+      height="32"
+    />
+    <span class="nav-hello" id="navHello" aria-hidden="true"></span>
+    <button
+      id="modeToggle"
+      class="mode-toggle"
+      aria-label="Toggle dark and light mode"
+    >
+      🌙
+    </button>
+  </nav>
 
-<nav class="navbar">
-  <img src="assets/images/logo.svg" alt="Logo" class="nav-logo">
-  <span class="nav-hello" id="navHello"></span>
-  <button id="modeToggle" class="mode-toggle">🌙</button>
-</nav>
+  <main class="wrap" role="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero fade">
+      <img
+        class="hero-icon"
+        src="assets/images/hero.jpg"
+        alt="Portrait of Gean Paulo"
+        width="120"
+        height="120"
+      />
 
-<main class="wrap">
-  <!-- HERO SECTION -->
-  <section class="hero fade">
-    <img class="hero-icon" src="assets/images/hero.jpg" alt="Gean Paulo">
-    <h1>Gean Paulo</h1>
+      <h1>Gean Paulo</h1>
 
-    <div class="status-container">
-      <span class="status-pill">
-        <span class="status-dot"></span>
-        Available for projects
-      </span>
+      <div class="status-container">
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          Available for projects
+        </span>
 
-      <div class="status-actions">
-        <a href="mailto:geanpaulo@mail.com" class="contact-btn">Email</a>
-        <a href="https://wa.me/639202652736" target="_blank" class="contact-btn">WhatsApp</a>
+        <div class="status-actions">
+          <a href="mailto:geanpaulo@mail.com" class="contact-btn">Email</a>
+          <a
+            href="https://wa.me/639202652736"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-btn"
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
-    </div>
 
-    <p>
-      Designing and building modern web experiences
-      with clarity, motion, and purpose.
-    </p>
+      <p>
+        Designing and building modern web experiences with clarity, motion, and purpose.
+      </p>
 
-    <!-- ABOUT -->
-    <p class="hero-about">
-      Hi, I’m Gean Paulo. A web designer and developer passionate about creating interactive and user-friendly digital experiences.
-    </p>
+      <p class="hero-about">
+        Hi, I’m Gean Paulo — a web designer and front-end developer passionate about creating
+        interactive and user-friendly digital experiences.
+      </p>
 
-    <!-- SKILLS -->
-    <div class="skills">
-      <span class="skill" title="JavaScript">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript
-      </span>
-      <span class="skill" title="HTML">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"> HTML
-      </span>
-      <span class="skill" title="CSS">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"> CSS
-      </span>
-      <span class="skill" title="UI/UX">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="UI/UX"> UI/UX
-      </span>
-      <span class="skill" title="WordPress">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress"> WordPress
-      </span>
-      <span class="skill" title="CPanel">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cpanel/cpanel-original.svg" alt="CPanel"> CPanel
-      </span>
-      <span class="skill" title="GitHub">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub
-      </span>
-    </div>
+      <!-- ================= SKILLS ================= -->
+      <div class="skills" aria-label="Skills">
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript logo" /> JavaScript
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo" /> HTML
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 logo" /> CSS
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma logo" /> UI/UX
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress logo" /> WordPress
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cpanel/cpanel-original.svg" alt="cPanel logo" /> cPanel
+        </span>
+        <span class="skill">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub logo" /> GitHub
+        </span>
+      </div>
 
-    <!-- QUOTE BELOW SKILLS -->
-    <p id="quote-container" class="hero-quote fade"></p>
-  </section>
+      <p id="quote-container" class="hero-quote fade"></p>
+    </section>
 
-  <!-- PROJECTS -->
-  <section class="work">
-    <h2 class="fade">Selected Work</h2>
-    <div id="projects"></div>
-  </section>
+    <!-- ================= WORK ================= -->
+    <section class="work">
+      <h2 class="fade">Selected Work</h2>
+      <div id="projects"></div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="fade">
-    <div class="footer-credit">
-      From Manila, with ❤️… and a bit of chaos 💻
-    </div>
-    <div class="footer-links">
-      <a href="https://geanpaulo.link" target="_blank">Links</a>
-      <a href="https://github.com/geanpaulo19" target="_blank">GitHub</a>
-      <a href="https://www.facebook.com/geanpaulofrancois/" target="_blank">Facebook</a>
-      <a href="https://x.com/geanpaulo_" target="_blank">X</a>
-      <a href="https://www.instagram.com/geanpau.lo/" target="_blank">Instagram</a>
-    </div>
-  </footer>
-</main>
+    <!-- ================= FOOTER ================= -->
+    <footer class="fade" role="contentinfo">
+      <div class="footer-credit">
+        From Manila, with ❤️… and a bit of chaos 💻
+      </div>
 
-<script src="app.js"></script>
+      <div class="footer-links">
+        <a href="https://geanpaulo.link" target="_blank" rel="noopener noreferrer">Links</a>
+        <a href="https://github.com/geanpaulo19" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.facebook.com/geanpaulofrancois/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://x.com/geanpaulo_" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.instagram.com/geanpau.lo/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
