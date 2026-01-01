@@ -13,6 +13,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- BODY ---------- */
 body {
   margin: 0;
   background: var(--bg);
@@ -21,13 +22,49 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
+/* Hide default cursor only on hover-enabled devices */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  #custom-cursor {
+    display: block;
+  }
+}
+
+/* Restore default cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+
+  #custom-cursor {
+    display: none !important;
+  }
+}
+
+/* ---------- WRAP ---------- */
 .wrap {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   padding: 6rem 1.5rem;
 }
 
-/* HERO */
+@media (max-width: 1024px) {
+  .wrap {
+    max-width: 900px;
+    padding: 6rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 4rem 1.5rem;
+  }
+}
+
+/* ---------- HERO ---------- */
 .hero h1 {
   font-size: clamp(3.5rem, 8vw, 5.5rem);
   letter-spacing: -0.04em;
@@ -63,7 +100,7 @@ body {
   transition: border-color 0.5s ease;
 }
 
-/* WORK */
+/* ---------- WORK ---------- */
 .work {
   margin-top: 6rem;
 }
@@ -74,14 +111,13 @@ body {
   transition: color 0.5s ease;
 }
 
-/* PROJECT GRID */
+/* ---------- PROJECT GRID ---------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
 
-/* Each project card */
 .project {
   position: relative;
   background: rgba(255, 255, 255, 0.03);
@@ -99,7 +135,6 @@ body {
   box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
-/* Project link inside card */
 .project-link {
   display: flex;
   flex-direction: column;
@@ -109,7 +144,6 @@ body {
   color: inherit;
 }
 
-/* Circular icon */
 .project-icon {
   width: 80px;
   height: 80px;
@@ -125,7 +159,6 @@ body {
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* Project text inside card */
 .project-info {
   display: flex;
   flex-direction: column;
@@ -146,7 +179,6 @@ body {
   transition: color 0.5s ease;
 }
 
-/* Project tags */
 .project-tags {
   display: flex;
   gap: 0.5rem;
@@ -165,7 +197,6 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* Project filter buttons */
 .project-filter {
   display: flex;
   flex-wrap: wrap;
@@ -196,7 +227,7 @@ body {
   border-color: var(--accent);
 }
 
-/* FOOTER */
+/* ---------- FOOTER ---------- */
 footer {
   margin-top: 6rem;
   display: flex;
@@ -204,7 +235,7 @@ footer {
   flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
-  font-size: 0.95rem; /* unified font size */
+  font-size: 0.95rem;
   line-height: 1.5;
 }
 
@@ -240,11 +271,11 @@ footer {
   
   .footer-credit {
     white-space: normal;
-    margin-bottom: 0.5rem; /* extra breathing room from links */
+    margin-bottom: 0.5rem;
   }
 }
 
-/* MOTION */
+/* ---------- MOTION ---------- */
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -258,7 +289,6 @@ footer {
   }
 }
 
-/* MOBILE STACK */
 @media (max-width: 500px) {
   .project-link {
     align-items: flex-start;
@@ -269,7 +299,7 @@ footer {
   }
 }
 
-/* Dark/Light Mode Toggle Button */
+/* Dark/Light Mode */
 .mode-toggle {
   position: fixed;
   top: 1.5rem;
@@ -294,7 +324,6 @@ footer {
   transform: rotate(360deg) scale(1.2);
 }
 
-/* LIGHT MODE VARIABLES */
 body.light-mode {
   --bg: #f5f5f7;
   --fg: #0e0e11;
@@ -329,7 +358,6 @@ body.light-mode .project-filter button:hover {
   border-color: var(--accent);
 }
 
-/* Status pill container */
 .status-container {
   display: flex;
   align-items: center;
@@ -339,7 +367,6 @@ body.light-mode .project-filter button:hover {
   flex-wrap: wrap;
 }
 
-/* Status pill */
 .status-pill {
   display: flex;
   align-items: center;
@@ -353,7 +380,6 @@ body.light-mode .project-filter button:hover {
   height: 32px;
 }
 
-/* Blinking green dot - subtle */
 .status-dot {
   width: 10px;
   height: 10px;
@@ -367,7 +393,6 @@ body.light-mode .project-filter button:hover {
   50% { opacity: 0.4; }
 }
 
-/* Contact buttons */
 .contact-btn {
   display: inline-flex;
   align-items: center;
@@ -400,7 +425,7 @@ body.light-mode .contact-btn {
   color: var(--bg);
 }
 
-/* Custom Circle Cursor */
+/* ---------- CUSTOM CURSOR ---------- */
 .cursor {
   position: fixed;
   top: 0;
@@ -415,27 +440,19 @@ body.light-mode .contact-btn {
   z-index: 9999;
 }
 
-/* Hover enlarge effect */
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   border-color: var(--fg);
   background: rgba(139, 139, 255, 0.2);
 }
 
-/* Click pulse effect */
 .cursor.click {
   transform: translate(-50%, -50%) scale(0.8);
   border-color: var(--accent);
   background: rgba(139, 139, 255, 0.3);
 }
 
-/* Hide custom cursor by default on touch devices */
-@media (hover: none) and (pointer: coarse) {
-  #custom-cursor {
-    display: none !important;
-  }
-}
-
+/* ---------- HERO QUOTE ---------- */
 .hero-quote {
   font-size: 0.85rem;
   color: var(--muted);
