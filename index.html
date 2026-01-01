@@ -17,7 +17,7 @@
   <meta name="author" content="Gean Paulo">
   <meta name="robots" content="index, follow">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Gean Paulo — Web Designer & Developer">
   <meta property="og:description" content="Crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design.">
   <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
   <meta name="twitter:description" content="Crafting modern, interactive, and user-friendly web experiences with JavaScript, React, HTML, CSS, and UI/UX design.">
   <meta name="twitter:image" content="https://geanpaulo.site/assets/images/hero.jpg">
 
-  <!-- Structured Data JSON-LD -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,7 +50,6 @@
   }
   </script>
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -62,26 +61,33 @@
   <section class="hero fade">
     <img class="hero-icon" src="assets/images/hero.jpg" alt="Gean Paulo">
     <h1>Gean Paulo</h1>
+
     <div class="status-container">
       <span class="status-pill">
         <span class="status-dot"></span>
         Available for projects
       </span>
-      <a href="mailto:geanpaulo@mail.com" class="contact-btn">Email</a>
-      <a href="https://wa.me/639202652736" target="_blank" class="contact-btn">WhatsApp</a>
+
+      <div class="status-actions">
+        <a href="mailto:geanpaulo@mail.com" class="contact-btn">Email</a>
+        <a href="https://wa.me/639202652736" target="_blank" class="contact-btn">WhatsApp</a>
+      </div>
     </div>
+
     <p>
       Designing and building modern web experiences
       with clarity, motion, and purpose.
     </p>
+
     <p class="hero-about">
       Hi, I’m Gean Paulo — a web designer and developer passionate about creating interactive and user-friendly digital experiences.  
       Skills: JavaScript, React, HTML, CSS, UI/UX design, and modern web tools.
     </p>
+
     <p id="quote-container" class="hero-quote fade"></p>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section class="work">
     <h2 class="fade">Selected Work</h2>
     <div id="projects"></div>
