@@ -2,14 +2,40 @@
 const modeToggle = document.getElementById('modeToggle');
 const body = document.body;
 
+// Detect system preference
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
 // Load saved theme
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light') {
   body.classList.add('light-mode');
   modeToggle.textContent = '☀️';
-} else {
+} else if (savedTheme === 'dark') {
+  body.classList.remove('light-mode');
   modeToggle.textContent = '🌙';
+} else {
+  // No saved theme → use system preference
+  if (prefersDark.matches) {
+    body.classList.remove('light-mode'); // ensure dark
+    modeToggle.textContent = '🌙';
+  } else {
+    body.classList.add('light-mode');
+    modeToggle.textContent = '☀️';
+  }
 }
+
+// Listen for system theme changes if user hasn't manually chosen a theme
+prefersDark.addEventListener('change', e => {
+  if (!localStorage.getItem('theme')) {
+    if (e.matches) {
+      body.classList.remove('light-mode');
+      modeToggle.textContent = '🌙';
+    } else {
+      body.classList.add('light-mode');
+      modeToggle.textContent = '☀️';
+    }
+  }
+});
 
 // Toggle mode on click with animation
 modeToggle.addEventListener('click', () => {
@@ -103,7 +129,6 @@ fetch('projects.json')
   });
 
 // --- CUSTOM CIRCLE CURSOR ---
-// Only on hover-capable devices
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   const cursor = document.createElement('div');
   cursor.classList.add('cursor');
@@ -136,7 +161,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 // --- Quote of the Day ---
-const heroAbout = document.querySelector('.hero-about');
+const skillsContainer = document.querySelector('.skills'); // <- change target to skills
 
 fetch('https://proxy.geanpaulofrancois.workers.dev/')
   .then(res => res.json())
@@ -148,40 +173,44 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
     const titleElem = document.createElement('p');
     titleElem.className = 'hero-quote-title fade';
     titleElem.textContent = 'Quote for the day';
-    titleElem.style.fontSize = '0.8rem';
-    titleElem.style.fontWeight = '600';
-    titleElem.style.color = '#8b8bff'; // accent color for title
-    titleElem.style.marginTop = '1.5rem';
-    titleElem.style.marginBottom = '0.25rem';
-    titleElem.style.maxWidth = '600px';
-    titleElem.style.marginLeft = 'auto';
-    titleElem.style.marginRight = 'auto';
-    titleElem.style.textAlign = 'center';
-    titleElem.style.opacity = '0';
-    titleElem.style.transform = 'translateY(20px)';
-    titleElem.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    Object.assign(titleElem.style, {
+      fontSize: '0.8rem',
+      fontWeight: '600',
+      color: '#8b8bff',
+      marginTop: '1.5rem',
+      marginBottom: '0.25rem',
+      maxWidth: '600px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      textAlign: 'center',
+      opacity: '0',
+      transform: 'translateY(20px)',
+      transition: 'opacity 0.8s ease, transform 0.8s ease'
+    });
 
     // Create quote element
     const quoteElem = document.createElement('p');
     quoteElem.className = 'hero-quote fade';
     quoteElem.textContent = quoteText + quoteAuthor;
-    quoteElem.style.fontSize = '0.85rem';
-    quoteElem.style.fontStyle = 'italic';
-    quoteElem.style.color = getComputedStyle(document.body).getPropertyValue('--muted').trim();
-    quoteElem.style.margin = '0';
-    quoteElem.style.maxWidth = '600px';
-    quoteElem.style.marginLeft = 'auto';
-    quoteElem.style.marginRight = 'auto';
-    quoteElem.style.textAlign = 'center';
-    quoteElem.style.opacity = '0';
-    quoteElem.style.transform = 'translateY(20px)';
-    quoteElem.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s, color 0.5s ease';
+    Object.assign(quoteElem.style, {
+      fontSize: '0.85rem',
+      fontStyle: 'italic',
+      color: getComputedStyle(document.body).getPropertyValue('--muted').trim(),
+      margin: '0',
+      maxWidth: '600px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      textAlign: 'center',
+      opacity: '0',
+      transform: 'translateY(20px)',
+      transition: 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s, color 0.5s ease'
+    });
 
-    // Insert after hero-about
-    heroAbout.insertAdjacentElement('afterend', titleElem);
+    // Insert quote **after the skills container**
+    skillsContainer.insertAdjacentElement('afterend', titleElem);
     titleElem.insertAdjacentElement('afterend', quoteElem);
 
-    // Trigger fade-in animation
+    // Trigger fade-in
     requestAnimationFrame(() => {
       titleElem.style.opacity = '1';
       titleElem.style.transform = 'translateY(0)';
@@ -189,7 +218,7 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
       quoteElem.style.transform = 'translateY(0)';
     });
 
-    // --- Responsive: left align on mobile ---
+    // --- Responsive alignment ---
     const mq = window.matchMedia('(max-width: 600px)');
     const updateAlignment = (e) => {
       if (e.matches) {
@@ -213,19 +242,13 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
 
     // --- Update quote color on mode toggle ---
     const updateQuoteColor = () => {
-      const isLight = document.body.classList.contains('light-mode');
-      quoteElem.style.color = isLight
-        ? getComputedStyle(document.body).getPropertyValue('--muted').trim()
-        : getComputedStyle(document.body).getPropertyValue('--muted').trim();
+      quoteElem.style.color = getComputedStyle(document.body).getPropertyValue('--muted').trim();
     };
 
-    // Initial color
     updateQuoteColor();
-
-    // Listen for dark/light toggle
     const modeToggle = document.getElementById('modeToggle');
     modeToggle.addEventListener('click', () => {
-      setTimeout(updateQuoteColor, 50); // small delay to allow class toggle
+      setTimeout(updateQuoteColor, 50);
     });
   })
   .catch(err => console.error('Quote fetch error:', err));
