@@ -138,59 +138,47 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
     const quoteText = data.text || 'Stay motivated!';
     const quoteAuthor = data.author ? ` — ${data.author}` : '';
 
-    // Remove existing quote container if present
-    const existingContainer = document.querySelector('.hero-quote-container');
-    if (existingContainer) existingContainer.remove();
-
-    // Create container
-    const container = document.createElement('div');
-    container.className = 'hero-quote-container fade';
-    container.style.background = 'rgba(139, 139, 255, 0.05)';
-    container.style.borderLeft = '3px solid var(--accent)';
-    container.style.padding = '0.75rem 1rem';
-    container.style.borderRadius = '8px';
-    container.style.marginTop = '1.5rem';
-    container.style.display = 'flex';
-    container.style.flexDirection = 'column';
-    container.style.gap = '0.25rem';
-    container.style.opacity = '0';
-    container.style.transform = 'translateY(20px)';
-    container.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-
-    // Make width match hero-about
-    container.style.maxWidth = heroAbout.offsetWidth + 'px';
-    container.style.marginLeft = '0';
-    container.style.marginRight = '0';
+    // Remove existing quote or title if present
+    const existingQuote = document.querySelector('.hero-quote');
+    const existingTitle = document.querySelector('.hero-quote-title');
+    if (existingQuote) existingQuote.remove();
+    if (existingTitle) existingTitle.remove();
 
     // Create title
     const titleElem = document.createElement('p');
-    titleElem.className = 'hero-quote-title';
-    titleElem.textContent = 'Motivation for the day';
+    titleElem.className = 'hero-quote-title fade';
+    titleElem.textContent = 'Quote for the day';
     titleElem.style.fontSize = '0.8rem';
     titleElem.style.fontWeight = '600';
-    titleElem.style.color = 'var(--accent)';
-    titleElem.style.margin = '0';
+    titleElem.style.color = '#8b8bff';
+    titleElem.style.marginTop = '1.5rem';
+    titleElem.style.marginBottom = '0.25rem';
+    titleElem.style.opacity = '0';
+    titleElem.style.transform = 'translateY(20px)';
+    titleElem.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
 
-    // Create quote
+    // Create quote element
     const quoteElem = document.createElement('p');
-    quoteElem.className = 'hero-quote';
+    quoteElem.className = 'hero-quote fade';
     quoteElem.textContent = quoteText + quoteAuthor;
     quoteElem.style.fontSize = '0.85rem';
     quoteElem.style.fontStyle = 'italic';
-    quoteElem.style.color = 'var(--muted)';
+    quoteElem.style.color = '#9a9aa3';
     quoteElem.style.margin = '0';
+    quoteElem.style.opacity = '0';
+    quoteElem.style.transform = 'translateY(20px)';
+    quoteElem.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s'; // delay for stagger
 
-    // Append title and quote to container
-    container.appendChild(titleElem);
-    container.appendChild(quoteElem);
-
-    // Insert container after hero-about
-    heroAbout.insertAdjacentElement('afterend', container);
+    // Insert after hero-about
+    heroAbout.insertAdjacentElement('afterend', titleElem);
+    titleElem.insertAdjacentElement('afterend', quoteElem);
 
     // Trigger fade-in animation
     requestAnimationFrame(() => {
-      container.style.opacity = '1';
-      container.style.transform = 'translateY(0)';
+      titleElem.style.opacity = '1';
+      titleElem.style.transform = 'translateY(0)';
+      quoteElem.style.opacity = '1';
+      quoteElem.style.transform = 'translateY(0)';
     });
   })
   .catch(err => console.error('Quote fetch error:', err));
