@@ -254,32 +254,53 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
   .catch(err => console.error('Quote fetch error:', err));
 
 const greetings = [
-  "Hello",      // English
-  "Hola",       // Spanish
-  "Bonjour",    // French
-  "Hallo",      // German / Dutch
-  "Ciao",       // Italian
-  "Olá",        // Portuguese
-  "Привет",     // Russian (informal)
-  "こんにちは", // Japanese
-  "안녕하세요", // Korean
-  "你好",       // Mandarin Chinese
-  "مرحبا",      // Arabic
-  "नमस्ते",     // Hindi
-  "Kamusta",    // Filipino / Cebuano
-  "Jambo",      // Swahili
-  "Yassas",     // Greek
-  "Xin chào",   // Vietnamese
-  "Hej",        // Swedish / Danish
-  "Salam",      // Persian / Uzbek greeting
-  "მოგესალმებით",// Georgian (Mogesalmebit)
-  "Sawubona",   // Zulu
-  "Kia ora",    // Māori
-  "Aloha",      // Hawaiian
-  "Shalom",     // Hebrew
-  "Selamat",    // Malay / Indonesian
-  "Cześć",      // Polish
-  "Dia dhuit"   // Irish Gaelic
+  "Hello",        // English
+  "Hola",         // Spanish
+  "Bonjour",      // French
+  "Hallo",        // German / Dutch
+  "Ciao",         // Italian
+  "Olá",          // Portuguese
+  "Привет",       // Russian
+  "Здравствуйте", // Russian formal
+  "こんにちは",    // Japanese
+  "안녕하세요",     // Korean
+  "你好",         // Mandarin Chinese
+  "مرحبا",        // Arabic
+  "नमस्ते",       // Hindi
+  "Kamusta",      // Filipino / Cebuano
+  "Jambo",        // Swahili
+  "Yassas",       // Greek
+  "Xin chào",     // Vietnamese
+  "Hej",          // Swedish / Danish
+  "Salam",        // Persian / Uzbek
+  "მოგესალმებით",  // Georgian
+  "Sawubona",     // Zulu
+  "Kia ora",      // Māori
+  "Aloha",        // Hawaiian
+  "Shalom",       // Hebrew
+  "Selamat",      // Malay / Indonesian
+  "Cześć",        // Polish
+  "Dia dhuit",    // Irish Gaelic
+  "Sannu",        // Hausa
+  "Sawasdee",     // Thai
+  "Hallo",        // Norwegian
+  "Tere",         // Estonian
+  "Sveiki",       // Latvian / Lithuanian
+  "Salut",        // Romanian
+  "Halo",         // Indonesian
+  "Hei",          // Finnish
+  "Mingalaba",    // Burmese
+  "Bună",         // Romanian
+  "God dag",      // Norwegian / Swedish
+  "Shikamoo",     // Swahili formal
+  "Salve",        // Latin / Italian archaic
+  "Hujambo",      // Swahili alternative
+  "Zdravo",       // Serbian / Croatian / Bosnian
+  "Sain baina uu",// Mongolian
+  "Selam",        // Turkish / Arabic variant
+  "Namaskar",     // Nepali
+  "Konnichiwa",   // Japanese daytime greeting
+  "Goedendag"     // Dutch
 ];
 
 let index = 0;
