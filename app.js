@@ -144,21 +144,19 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
     const quoteText = data.text || 'Stay motivated!';
     const quoteAuthor = data.author ? ` — ${data.author}` : '';
 
-    // Remove existing quote or title if present
-    const existingQuote = document.querySelector('.hero-quote');
-    const existingTitle = document.querySelector('.hero-quote-title');
-    if (existingQuote) existingQuote.remove();
-    if (existingTitle) existingTitle.remove();
-
-    // Create title
+    // Create title element
     const titleElem = document.createElement('p');
     titleElem.className = 'hero-quote-title fade';
     titleElem.textContent = 'Quote for the day';
     titleElem.style.fontSize = '0.8rem';
     titleElem.style.fontWeight = '600';
-    titleElem.style.color = '#8b8bff';
+    titleElem.style.color = '#8b8bff'; // accent color for title
     titleElem.style.marginTop = '1.5rem';
     titleElem.style.marginBottom = '0.25rem';
+    titleElem.style.maxWidth = '600px';
+    titleElem.style.marginLeft = 'auto';
+    titleElem.style.marginRight = 'auto';
+    titleElem.style.textAlign = 'center';
     titleElem.style.opacity = '0';
     titleElem.style.transform = 'translateY(20px)';
     titleElem.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
@@ -169,11 +167,15 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
     quoteElem.textContent = quoteText + quoteAuthor;
     quoteElem.style.fontSize = '0.85rem';
     quoteElem.style.fontStyle = 'italic';
-    quoteElem.style.color = '#9a9aa3';
+    quoteElem.style.color = getComputedStyle(document.body).getPropertyValue('--muted').trim();
     quoteElem.style.margin = '0';
+    quoteElem.style.maxWidth = '600px';
+    quoteElem.style.marginLeft = 'auto';
+    quoteElem.style.marginRight = 'auto';
+    quoteElem.style.textAlign = 'center';
     quoteElem.style.opacity = '0';
     quoteElem.style.transform = 'translateY(20px)';
-    quoteElem.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s'; // delay for stagger
+    quoteElem.style.transition = 'opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s, color 0.5s ease';
 
     // Insert after hero-about
     heroAbout.insertAdjacentElement('afterend', titleElem);
@@ -186,5 +188,96 @@ fetch('https://proxy.geanpaulofrancois.workers.dev/')
       quoteElem.style.opacity = '1';
       quoteElem.style.transform = 'translateY(0)';
     });
+
+    // --- Responsive: left align on mobile ---
+    const mq = window.matchMedia('(max-width: 600px)');
+    const updateAlignment = (e) => {
+      if (e.matches) {
+        titleElem.style.textAlign = 'left';
+        titleElem.style.marginLeft = '0';
+        titleElem.style.marginRight = '0';
+        quoteElem.style.textAlign = 'left';
+        quoteElem.style.marginLeft = '0';
+        quoteElem.style.marginRight = '0';
+      } else {
+        titleElem.style.textAlign = 'center';
+        titleElem.style.marginLeft = 'auto';
+        titleElem.style.marginRight = 'auto';
+        quoteElem.style.textAlign = 'center';
+        quoteElem.style.marginLeft = 'auto';
+        quoteElem.style.marginRight = 'auto';
+      }
+    };
+    updateAlignment(mq);
+    mq.addEventListener('change', updateAlignment);
+
+    // --- Update quote color on mode toggle ---
+    const updateQuoteColor = () => {
+      const isLight = document.body.classList.contains('light-mode');
+      quoteElem.style.color = isLight
+        ? getComputedStyle(document.body).getPropertyValue('--muted').trim()
+        : getComputedStyle(document.body).getPropertyValue('--muted').trim();
+    };
+
+    // Initial color
+    updateQuoteColor();
+
+    // Listen for dark/light toggle
+    const modeToggle = document.getElementById('modeToggle');
+    modeToggle.addEventListener('click', () => {
+      setTimeout(updateQuoteColor, 50); // small delay to allow class toggle
+    });
   })
   .catch(err => console.error('Quote fetch error:', err));
+
+const greetings = [
+  "Hello",      // English
+  "Hola",       // Spanish
+  "Bonjour",    // French
+  "Hallo",      // German / Dutch
+  "Ciao",       // Italian
+  "Olá",        // Portuguese
+  "Привет",     // Russian (informal)
+  "こんにちは", // Japanese
+  "안녕하세요", // Korean
+  "你好",       // Mandarin Chinese
+  "مرحبا",      // Arabic
+  "नमस्ते",     // Hindi
+  "Kamusta",    // Filipino / Cebuano
+  "Jambo",      // Swahili
+  "Yassas",     // Greek
+  "Xin chào",   // Vietnamese
+  "Hej",        // Swedish / Danish
+  "Salam",      // Persian / Uzbek greeting
+  "მოგესალმებით",// Georgian (Mogesalmebit)
+  "Sawubona",   // Zulu
+  "Kia ora",    // Māori
+  "Aloha",      // Hawaiian
+  "Shalom",     // Hebrew
+  "Selamat",    // Malay / Indonesian
+  "Cześć",      // Polish
+  "Dia dhuit"   // Irish Gaelic
+];
+
+let index = 0;
+const navHello = document.getElementById("navHello");
+
+function rotateGreeting() {
+  // fade out
+  navHello.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  navHello.style.opacity = 0;
+  navHello.style.transform = "translateY(-5px)";
+
+  setTimeout(() => {
+    // change text
+    navHello.textContent = greetings[index];
+    // fade in
+    navHello.style.opacity = 1;
+    navHello.style.transform = "translateY(0)";
+    index = (index + 1) % greetings.length;
+  }, 500); // fade duration
+}
+
+// initialize
+rotateGreeting();
+setInterval(rotateGreeting, 5000); // slower rotation (every 5s)
