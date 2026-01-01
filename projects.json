@@ -7,6 +7,13 @@
     "tags": ["Web", "Creative"]
   },
   {
+  "title": "Zen New Tab",
+  "description": "A minimalistic, customizable new tab extension with quick links, weather, quotes, and a smooth dark/light interface for productivity and aesthetics.",
+  "url": "https://github.com/geanpaulo19/zen-new-tab",
+  "image": "assets/images/zentab.png",
+  "tags": ["Web Extension", "Productivity"]
+},
+  {
     "title": "Gradient Generator",
     "description": "Easily create beautiful gradients with customizable colors. Users can export their designs for use in websites, graphics, and apps.",
     "url": "https://gradiently.netlify.app",
