@@ -1034,3 +1034,73 @@ body:not(.light-mode) .modal-header {
     font-size: 0.95rem;
   }
 }
+
+/* =========================
+   404 PAGE
+========================= */
+.page-404 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.page-404 h1 {
+  font-size: clamp(6rem, 12vw, 10rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0;
+  color: var(--accent);
+  transition: color 0.5s ease;
+}
+
+.page-404 h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin: 0;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.page-404 p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 450px;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+.page-404 .cta-btn {
+  margin-top: 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.page-404 .cta-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+
+/* Small screen adjustments */
+@media (max-width: 600px) {
+  .page-404 h1 {
+    font-size: clamp(4rem, 14vw, 8rem);
+  }
+  .page-404 h2 {
+    font-size: clamp(1.25rem, 5vw, 2rem);
+  }
+  .page-404 p {
+    font-size: 0.95rem;
+  }
+}
