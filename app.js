@@ -371,13 +371,28 @@ document.addEventListener("DOMContentLoaded", () => {
 const modal = document.getElementById("aboutModal");
 const openTrigger = document.getElementById("openAbout"); // hero name span
 const closeBtn = modal.querySelector(".modal-close");    // modal close button
+const modalCard = modal.querySelector(".modal-card");
+
+function centerModal() {
+  // Ensures modal is vertically centered even if viewport changes (iOS bars, keyboard, etc.)
+  if (!modal.classList.contains("active")) return;
+
+  const viewportHeight = window.innerHeight;
+  const cardHeight = modalCard.offsetHeight;
+  const marginTop = Math.max((viewportHeight - cardHeight) / 2, 10);
+  modalCard.style.marginTop = `${marginTop}px`;
+  modalCard.style.marginBottom = `${marginTop}px`;
+}
 
 function openModal() {
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
-  // Lock background scroll while modal is open
+  // Lock background scroll
   document.body.style.overflow = "hidden";
+
+  // Center the modal
+  centerModal();
 }
 
 function closeModal() {
@@ -386,6 +401,10 @@ function closeModal() {
 
   // Unlock background scroll
   document.body.style.overflow = "";
+
+  // Reset modal margins
+  modalCard.style.marginTop = "";
+  modalCard.style.marginBottom = "";
 }
 
 // Open modal when trigger is clicked
@@ -403,3 +422,7 @@ modal.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
 });
+
+// Recenter modal on resize/orientation change (iOS bars, keyboard)
+window.addEventListener("resize", centerModal);
+window.addEventListener("orientationchange", centerModal);
