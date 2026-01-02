@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function setVhProperty() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
-  updateModalHeight(); // update modal/backdrop heights on viewport change
+  updateModalHeight(); // adjust modal heights whenever viewport changes
 }
 
 // Set on page load
@@ -389,7 +389,10 @@ function updateModalHeight() {
   const modalBackdrop = document.querySelector('.modal-backdrop');
   const modalCard = document.querySelector('.modal-card');
 
-  if (modalBackdrop) modalBackdrop.style.height = `${vh}px`;
+  if (modalBackdrop) {
+    modalBackdrop.style.height = `${vh}px`;
+    modalBackdrop.style.minHeight = '-webkit-fill-available'; // Safari fix
+  }
   if (modalCard) modalCard.style.maxHeight = `${vh * 0.8}px`;
 }
 
@@ -401,11 +404,11 @@ const openTrigger = document.getElementById("openAbout"); // hero name span
 const closeBtn = modal.querySelector(".modal-close");    // modal close button
 
 function openModal() {
-  setTimeout(updateModalHeight, 50); // ensure correct height when opening
+  updateModalHeight(); // immediately adjust height
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
-  // Only lock scroll on non-mobile
+  // Lock scroll only on non-mobile
   if (!/Mobi|Android/i.test(navigator.userAgent)) {
     document.body.style.overflow = "hidden";
   }
