@@ -98,22 +98,44 @@
   <main class="wrap" role="main">
     <!-- ================= HERO ================= -->
     <section class="hero fade">
-      <img
-        class="hero-icon"
-        src="assets/images/hero.jpg"
-        alt="Portrait of Gean Paulo"
-        width="120"
-        height="120"
-      />
+      <!-- Hero Icon Flip -->
+      <div class="hero-icon-flip">
+        <!-- Front: Your photo -->
+        <div class="flip-card-front">
+          <img
+            class="hero-icon"
+            src="assets/images/hero.jpg"
+            alt="Portrait of Gean Paulo"
+            width="120"
+            height="120"
+          />
+        </div>
 
-      <!-- NAME + INFO ICON (SAFE INLINE WRAP) -->
-<h1>
-  <span class="hero-name-inline" id="openAbout" title="Click to know more about Gean Paulo">
-    <span class="hero-name-text">Gean Paulo</span>
-    <span class="info-icon" aria-hidden="true">i</span>
-  </span>
-</h1>
+        <!-- Back: QR Code -->
+        <div class="flip-card-back">
+          <img
+            class="hero-icon"
+            src="assets/images/qr-code.png"
+            alt="Scan to connect"
+            width="120"
+            height="120"
+          />
+        </div>
+      </div>
 
+      <!-- Name + Info Icon -->
+      <h1>
+        <span
+          class="hero-name-inline"
+          id="openAbout"
+          title="Click to know more about Gean Paulo"
+        >
+          <span class="hero-name-text">Gean Paulo</span>
+          <span class="info-icon" aria-hidden="true">i</span>
+        </span>
+      </h1>
+
+      <!-- Status / Contact -->
       <div class="status-container">
         <span class="status-pill">
           <span class="status-dot"></span>
@@ -133,6 +155,7 @@
         </div>
       </div>
 
+      <!-- Hero Text -->
       <p>
         Designing and building modern web experiences with clarity, motion, and purpose.
       </p>
@@ -212,54 +235,52 @@
     </footer>
   </main>
 
-<!-- ================= ABOUT MODAL ================= -->
-<div class="modal-backdrop" id="aboutModal" aria-hidden="true">
-  <div class="modal-card" role="dialog" aria-modal="true">
+  <!-- ================= ABOUT MODAL ================= -->
+  <div class="modal-backdrop" id="aboutModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <!-- Sticky header -->
+      <div class="modal-header">
+        <h2>About Me</h2>
+        <button class="modal-close" aria-label="Close modal">×</button>
+      </div>
 
-    <!-- Sticky header -->
-    <div class="modal-header">
-      <h2>About Me</h2>
-      <button class="modal-close" aria-label="Close modal">×</button>
-    </div>
+      <!-- Scrollable content -->
+      <div class="modal-content">
+        <p class="modal-about">
+          I am Gean Paulo, most people call me Gean. Born and raised in the Philippines, I have been passionate about building digital experiences for over 10 years. I started creating websites in 2014, helping small to medium businesses establish their online presence. Since then, I’ve collaborated with international clients from the United States, Australia, United Arab Emirates, and the Philippines, crafting interactive, user-friendly, and visually appealing websites that blend creativity with clean, maintainable code.
+        </p>
 
-    <!-- Scrollable content -->
-    <div class="modal-content">
-      <p class="modal-about">
-        I am Gean Paulo, most people call me Gean. Born and raised in the Philippines, I have been passionate about building digital experiences for over 10 years. I started creating websites in 2014, helping small to medium businesses establish their online presence. Since then, I’ve collaborated with international clients from the United States, Australia, United Arab Emirates, and the Philippines, crafting interactive, user-friendly, and visually appealing websites that blend creativity with clean, maintainable code.
-      </p>
-
-      <div class="modal-grid">
-        <div>
-          <h3>🎓 Education</h3>
-          <p>Bachelor of Science in Information Technology, Major in Programming</p>
-        </div>
-
-        <div>
-          <h3>💼 Work Experience</h3>
-          <div class="section-lines">
-            <p>Freelance Web Designer/Developer since 2014</p>
-            <p>Currently at Uber (2021 – Present)</p>
+        <div class="modal-grid">
+          <div>
+            <h3>🎓 Education</h3>
+            <p>Bachelor of Science in Information Technology, Major in Programming</p>
           </div>
-        </div>
 
-        <div>
-          <h3>🗓️ Career Journey</h3>
-          <div class="section-lines">
-            <p>2014 – Started freelance web development</p>
-            <p>2016 – Expanded client base internationally</p>
-            <p>2021 – Joined Uber, working full-time</p>
+          <div>
+            <h3>💼 Work Experience</h3>
+            <div class="section-lines">
+              <p>Freelance Web Designer/Developer since 2014</p>
+              <p>Currently at Uber (2021 – Present)</p>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h3>🎯 Hobbies</h3>
-          <p>UI design 🎨, creative coding 💻, learning new tools 🛠️, watching documentaries 📽️ & YouTube videos 🎬, listening to music 🎵, and sipping coffee ☕</p>
+          <div>
+            <h3>🗓️ Career Journey</h3>
+            <div class="section-lines">
+              <p>2014 – Started freelance web development</p>
+              <p>2016 – Expanded client base internationally</p>
+              <p>2021 – Joined Uber, working full-time</p>
+            </div>
+          </div>
+
+          <div>
+            <h3>🎯 Hobbies</h3>
+            <p>UI design 🎨, creative coding 💻, learning new tools 🛠️, watching documentaries 📽️ & YouTube videos 🎬, listening to music 🎵, and sipping coffee ☕</p>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
-</div>
 
   <script src="app.js"></script>
 </body>
