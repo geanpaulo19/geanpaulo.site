@@ -730,28 +730,33 @@ body.light-mode .nav-logo {
   .navbar {
     width: calc(100% - 3rem);
     max-width: none;
-    padding: 0.65rem 1.2rem; /* vertical padding for touch comfort */
-    top: 0.6rem;             /* adjusted top margin */
+    padding: 0.5rem 0.8rem 0.5rem 1rem; /* top right bottom left */
+    top: 0.6rem;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
+
+    display: flex;
+    align-items: center;        /* vertical centering */
+    justify-content: space-between; /* left greeting + right toggle */
   }
 
-  .navbar .nav-emoji {
-    font-size: 1.4rem;
-  }
-
+  /* Greeting text */
   .nav-hello {
     font-size: 0.9rem;
-    margin-left: 0.45rem;
+    font-weight: 500;
+    color: var(--fg);
+    display: flex;
+    align-items: center;       /* perfect vertical center */
+    margin: 0;                 /* remove any extra margin */
   }
 
   /* Perfect circle mode toggle */
   .navbar .mode-toggle {
     font-size: 0.95rem;
-    width: 2.4rem;    /* equal width */
-    height: 2.4rem;   /* equal height */
-    padding: 0;        /* remove padding to keep circle shape */
+    width: 2.2rem;    /* slightly smaller to match new padding */
+    height: 2.2rem;   
+    padding: 0;       
     border-radius: 50%;
     display: flex;
     align-items: center;
