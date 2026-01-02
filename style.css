@@ -691,7 +691,6 @@ body.light-mode .nav-logo {
 ========================= */
 .cta-section {
   margin-top: 6rem;
-  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -699,7 +698,7 @@ body.light-mode .nav-logo {
 .cta-card {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
-  padding: 2rem 2.5rem;
+  padding: 4rem 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -760,20 +759,23 @@ body.light-mode .nav-logo {
   transform: scale(1.05);
 }
 
+/* =========================
+   CTA MOBILE
+========================= */
 @media (max-width: 768px) {
   .cta-card {
     flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
+    align-items: flex-start; /* left align content */
+    gap: 1.25rem;
   }
 
   .cta-text {
-    text-align: center;
+    text-align: left; /* keep text left */
   }
 
   .cta-action {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* button left */
   }
 }
 
