@@ -736,16 +736,26 @@ body.light-mode .nav-logo {
     transform: translateX(-50%);
     border-radius: 999px;
   }
+
   .navbar .nav-emoji {
     font-size: 1.4rem;
   }
+
   .nav-hello {
     font-size: 0.9rem;
     margin-left: 0.45rem;
   }
+
+  /* Perfect circle mode toggle */
   .navbar .mode-toggle {
     font-size: 0.95rem;
-    padding: 0.38rem 0.6rem;
+    width: 2.4rem;    /* equal width */
+    height: 2.4rem;   /* equal height */
+    padding: 0;        /* remove padding to keep circle shape */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
