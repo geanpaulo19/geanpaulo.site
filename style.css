@@ -730,13 +730,14 @@ body.light-mode .nav-logo {
   .navbar {
     width: calc(100% - 3rem);
     max-width: none;
-    padding: 0.65rem 1.2rem; /* subtle increase from 0.55rem → 0.65rem */
+    padding: 0.65rem 1.2rem; /* vertical padding for touch comfort */
+    top: 0.8rem;             /* adjusted top margin */
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
   }
   .navbar .nav-emoji {
-    font-size: 1.4rem; /* keep same */
+    font-size: 1.4rem;
   }
   .nav-hello {
     font-size: 0.9rem;
@@ -744,7 +745,7 @@ body.light-mode .nav-logo {
   }
   .navbar .mode-toggle {
     font-size: 0.95rem;
-    padding: 0.38rem 0.6rem; /* slightly bigger to match navbar */
+    padding: 0.38rem 0.6rem;
   }
 }
 
