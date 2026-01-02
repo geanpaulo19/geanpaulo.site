@@ -849,13 +849,17 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;           /* allow scrolling if viewport too small */
+  overflow-y: auto;              /* allow scrolling if viewport too small */
   padding: 1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 2000;
-  height: calc(var(--vh) * 100); /* full dynamic viewport height */
+
+  /* Use dynamic vh */
+  height: calc(var(--vh) * 100);
+  min-height: -webkit-fill-available; /* Safari fix for bars */
+  overscroll-behavior: contain;       /* prevent background overscroll glitches */
 }
 
 .modal-backdrop.active {
@@ -875,8 +879,7 @@ footer {
   display: flex;
   flex-direction: column;
   max-height: calc(var(--vh) * 80); /* dynamic viewport height */
-  overflow: hidden;                 /* internal scroll handled by .modal-content */
-  gap: 0;
+  overflow: hidden;                  /* internal scroll handled by .modal-content */
   margin: auto;
 }
 
@@ -999,7 +1002,10 @@ body:not(.light-mode) .modal-header {
   .modal-backdrop {
     padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 0.5rem)
              env(safe-area-inset-bottom, 0.5rem) env(safe-area-inset-left, 0.5rem);
+
+    /* Always rely on dynamic --vh */
     height: calc(var(--vh) * 100);
+    min-height: -webkit-fill-available;
   }
 
   .modal-card {
