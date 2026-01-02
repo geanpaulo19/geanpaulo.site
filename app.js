@@ -430,5 +430,5 @@ window.addEventListener("orientationchange", centerModal);
 const heroFlip = document.querySelector('.hero-icon-flip');
 
 heroFlip.addEventListener('click', () => {
-  heroFlip.classList.toggle('flip');
+  heroFlip.classList.toggle('flipped');
 });
