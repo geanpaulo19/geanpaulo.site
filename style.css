@@ -1179,7 +1179,7 @@ body:not(.light-mode) .modal-header {
 }
 
 /* =========================
-   404 PAGE
+   404 PAGE (THEME AWARE)
 ========================= */
 .page-404 {
   display: flex;
@@ -1192,6 +1192,7 @@ body:not(.light-mode) .modal-header {
   gap: 1.5rem;
   background: var(--bg);
   color: var(--fg);
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
 .page-404 h1 {
@@ -1208,6 +1209,7 @@ body:not(.light-mode) .modal-header {
   margin: 0;
   color: var(--fg);
   font-weight: 500;
+  transition: color 0.5s ease;
 }
 
 .page-404 p {
@@ -1216,6 +1218,7 @@ body:not(.light-mode) .modal-header {
   max-width: 450px;
   line-height: 1.7;
   margin: 0 auto;
+  transition: color 0.5s ease;
 }
 
 .page-404 .cta-btn {
@@ -1226,13 +1229,29 @@ body:not(.light-mode) .modal-header {
   font-size: 1rem;
   border-radius: 999px;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, background 0.5s ease, color 0.5s ease;
 }
 
 .page-404 .cta-btn:hover {
   background: var(--fg);
   color: var(--bg);
   transform: scale(1.05);
+}
+
+/* Light mode overrides if needed (optional if variables already update) */
+body.light-mode .page-404 {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body.light-mode .page-404 .cta-btn {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+body.light-mode .page-404 .cta-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
 }
 
 /* Small screen adjustments */
