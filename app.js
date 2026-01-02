@@ -365,91 +365,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000); // rotate every 5 seconds
 });
 
-/* =========================
-   DYNAMIC VH + MODAL FIX FOR MOBILE
-========================= */
-function setVhProperty() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-  updateModalHeight(); // adjust modal heights whenever viewport changes
-}
-
-// Set on page load
-setVhProperty();
-
-// Update on resize/orientation change
-window.addEventListener('resize', setVhProperty);
-window.addEventListener('orientationchange', setVhProperty);
-
-/* =========================
-   MODAL HEIGHT FIX
-========================= */
-function updateModalHeight() {
-  const vh = window.innerHeight;
-  const modalBackdrop = document.querySelector('.modal-backdrop');
-  const modalCard = document.querySelector('.modal-card');
-
-  if (modalBackdrop) {
-    modalBackdrop.style.height = `${vh}px`;
-    modalBackdrop.style.minHeight = '-webkit-fill-available'; // Safari fix
-  }
-  if (modalCard) modalCard.style.maxHeight = `${vh * 0.8}px`;
-}
-
-/* =========================
+/* ======================
    ABOUT MODAL LOGIC
-========================= */
+====================== */
 const modal = document.getElementById("aboutModal");
-const openTrigger = document.getElementById("openAbout");
-const closeBtn = modal.querySelector(".modal-close");
-
-let mobileOverlay = null;
-
-function createMobileOverlay() {
-  if (!mobileOverlay) {
-    mobileOverlay = document.createElement("div");
-    mobileOverlay.style.position = "fixed";
-    mobileOverlay.style.top = 0;
-    mobileOverlay.style.left = 0;
-    mobileOverlay.style.width = "100vw";
-    mobileOverlay.style.height = "100vh";
-    mobileOverlay.style.background = "transparent";
-    mobileOverlay.style.zIndex = "1999"; // just below modal
-    document.body.appendChild(mobileOverlay);
-  }
-}
-
-function removeMobileOverlay() {
-  if (mobileOverlay) {
-    mobileOverlay.remove();
-    mobileOverlay = null;
-  }
-}
+const openTrigger = document.getElementById("openAbout"); // hero name span
+const closeBtn = modal.querySelector(".modal-close");    // modal close button
 
 function openModal() {
-  updateModalHeight(); // immediately adjust height
-  createMobileOverlay(); // fix persistent bars on mobile
-
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
-  // Lock scroll only on non-mobile
-  if (!/Mobi|Android/i.test(navigator.userAgent)) {
-    document.body.style.overflow = "hidden";
-  }
+  // Lock background scroll while modal is open
+  document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
   modal.classList.remove("active");
   modal.setAttribute("aria-hidden", "true");
 
-  removeMobileOverlay();
-
-  // Unlock scroll
+  // Unlock background scroll
   document.body.style.overflow = "";
 }
 
-// Open modal when hero name is clicked
+// Open modal when trigger is clicked
 openTrigger.addEventListener("click", openModal);
 
 // Close modal when close button is clicked
