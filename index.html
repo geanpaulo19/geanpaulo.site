@@ -106,7 +106,13 @@
         height="120"
       />
 
-      <h1>Gean Paulo</h1>
+      <!-- NAME + INFO ICON (SAFE INLINE WRAP) -->
+<h1>
+  <span class="hero-name-inline" id="openAbout" title="Click to know more about Gean Paulo">
+    <span class="hero-name-text">Gean Paulo</span>
+    <span class="info-icon" aria-hidden="true">i</span>
+  </span>
+</h1>
 
       <div class="status-container">
         <span class="status-pill">
@@ -171,24 +177,24 @@
     </section>
 
     <!-- ================= CALL TO ACTION ================= -->
-<section class="cta-section fade" aria-labelledby="cta-heading">
-  <div class="cta-card">
-    <div class="cta-text">
-      <h2 id="cta-heading">Like what you see?</h2>
-      <p>Let’s build something amazing together.</p>
-    </div>
+    <section class="cta-section fade" aria-labelledby="cta-heading">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2 id="cta-heading">Like what you see?</h2>
+          <p>Let’s build something amazing together.</p>
+        </div>
 
-    <div class="cta-action">
-      <a
-        href="mailto:geanpaulo@mail.com"
-        class="cta-btn"
-        aria-label="Get in touch with Gean Paulo"
-      >
-        Get in Touch
-      </a>
-    </div>
-  </div>
-</section>
+        <div class="cta-action">
+          <a
+            href="mailto:geanpaulo@mail.com"
+            class="cta-btn"
+            aria-label="Get in touch with Gean Paulo"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- ================= FOOTER ================= -->
     <footer class="fade" role="contentinfo">
@@ -205,6 +211,48 @@
       </div>
     </footer>
   </main>
+
+<!-- ================= ABOUT MODAL ================= -->
+<div class="modal-backdrop" id="aboutModal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true">
+    <button class="modal-close" aria-label="Close modal">×</button>
+
+    <h2>About Me</h2>
+
+    <p class="modal-about">
+      I am Gean Paulo, most people call me Gean. Born and raised in the Philippines, I have been passionate about building digital experiences for over 10 years. I started creating websites in 2014, helping small to medium businesses establish their online presence. Since then, I’ve collaborated with international clients from the United States, Australia, United Arab Emirates, and the Philippines, crafting interactive, user-friendly, and visually appealing websites that blend creativity with clean, maintainable code.
+    </p>
+
+    <div class="modal-grid">
+      <div>
+        <h3>🎓 Education</h3>
+        <p>Bachelor of Science in Information Technology, Major in Programming</p>
+      </div>
+
+      <div>
+        <h3>💼 Work Experience</h3>
+        <div class="section-lines">
+          <p>Freelance Web Designer/Developer since 2014</p>
+          <p>Currently at Uber (2021 – Present)</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>🗓️ Career Journey</h3>
+        <div class="section-lines">
+          <p>2014 – Started freelance web development</p>
+          <p>2016 – Expanded client base internationally</p>
+          <p>2021 – Joined Uber, working full-time</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>🎯 Hobbies</h3>
+        <p>UI design 🎨, creative coding 💻, learning new tools 🛠️, watching documentaries 📽️ & YouTube videos 🎬, listening to music 🎵, and sipping coffee ☕</p>
+      </div>
+    </div>
+  </div>
+</div>
 
   <script src="app.js"></script>
 </body>
