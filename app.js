@@ -371,6 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function setVhProperty() {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
+  updateModalHeight(); // update modal/backdrop heights on viewport change
 }
 
 // Set on page load
@@ -380,6 +381,18 @@ setVhProperty();
 window.addEventListener('resize', setVhProperty);
 window.addEventListener('orientationchange', setVhProperty);
 
+/* =========================
+   MODAL HEIGHT FIX
+========================= */
+function updateModalHeight() {
+  const vh = window.innerHeight;
+  const modalBackdrop = document.querySelector('.modal-backdrop');
+  const modalCard = document.querySelector('.modal-card');
+
+  if (modalBackdrop) modalBackdrop.style.height = `${vh}px`;
+  if (modalCard) modalCard.style.maxHeight = `${vh * 0.8}px`;
+}
+
 /* ======================
    ABOUT MODAL LOGIC
 ====================== */
@@ -388,6 +401,7 @@ const openTrigger = document.getElementById("openAbout"); // hero name span
 const closeBtn = modal.querySelector(".modal-close");    // modal close button
 
 function openModal() {
+  setTimeout(updateModalHeight, 50); // ensure correct height when opening
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
