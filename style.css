@@ -849,7 +849,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;              /* allow scrolling if viewport too small */
+  overflow-y: auto;                /* allow scrolling if viewport too small */
   padding: 1rem;
   opacity: 0;
   pointer-events: none;
@@ -1006,6 +1006,7 @@ body:not(.light-mode) .modal-header {
     /* Always rely on dynamic --vh */
     height: calc(var(--vh) * 100);
     min-height: -webkit-fill-available;
+    overscroll-behavior: contain;
   }
 
   .modal-card {
