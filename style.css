@@ -1238,22 +1238,6 @@ body:not(.light-mode) .modal-header {
   transform: scale(1.05);
 }
 
-/* Light mode overrides if needed (optional if variables already update) */
-body.light-mode .page-404 {
-  background: var(--bg);
-  color: var(--fg);
-}
-
-body.light-mode .page-404 .cta-btn {
-  background: var(--accent);
-  color: var(--bg);
-}
-
-body.light-mode .page-404 .cta-btn:hover {
-  background: var(--fg);
-  color: var(--bg);
-}
-
 /* Small screen adjustments */
 @media (max-width: 600px) {
   .page-404 h1 {
