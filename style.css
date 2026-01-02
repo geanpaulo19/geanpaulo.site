@@ -948,29 +948,33 @@ footer {
 /* INFO ICON - absolutely positioned so it doesn't shift the name */
 .info-icon {
   position: absolute;
-  right: -25px; /* distance from the right edge of name text */
+  right: -25px;
   top: 50%;
   transform: translateY(-50%) scale(0.8);
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: rgba(139,139,255,0.2);
-  color: var(--accent);
-  font-size: 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
+  color: var(--accent); /* SVG inherits */
 }
 
-/* Show icon on hover/focus */
 .hero-name-inline:hover .info-icon,
 .hero-name-inline:focus .info-icon {
   opacity: 1;
   transform: translateY(-50%) scale(1);
   pointer-events: auto;
+}
+
+.info-icon svg {
+  display: block;
+  width: 16px; /* larger */
+  height: 16px; /* larger */
 }
 
 /* =========================
