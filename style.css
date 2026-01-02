@@ -837,6 +837,10 @@ footer {
 /* =========================
    MODAL
 ========================= */
+:root {
+  --vh: 1vh; /* fallback, will be updated by JS */
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -851,6 +855,7 @@ footer {
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 2000;
+  height: calc(var(--vh) * 100); /* use dynamic viewport height */
 }
 
 .modal-backdrop.active {
@@ -869,7 +874,7 @@ footer {
   transition: transform 0.4s ease, color 0.5s ease;
   display: flex;
   flex-direction: column;
-  max-height: 80dvh; /* limit height to 80% of dynamic viewport */
+  max-height: calc(var(--vh) * 80); /* dynamic viewport height */
   overflow: hidden;  /* internal scroll handled in modal-content */
   gap: 0;
   margin: auto;      /* vertical centering if shorter than max-height */
@@ -998,7 +1003,7 @@ body:not(.light-mode) .modal-header {
 
   .modal-card {
     width: 95%;
-    max-height: 80dvh;
+    max-height: calc(var(--vh) * 80);
     margin: auto;
     border-radius: 16px;
   }
