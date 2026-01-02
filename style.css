@@ -838,7 +838,7 @@ footer {
    MODAL
 ========================= */
 :root {
-  --vh: 1vh; /* fallback, updated by JS */
+  --vh: 1vh; /* fallback, updated dynamically by JS */
 }
 
 .modal-backdrop {
@@ -855,8 +855,7 @@ footer {
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 2000;
-  height: 100dvh;             /* dynamic full viewport height */
-  min-height: -webkit-fill-available; /* Safari fix */
+  height: calc(var(--vh) * 100); /* full dynamic viewport height */
 }
 
 .modal-backdrop.active {
@@ -875,8 +874,8 @@ footer {
   transition: transform 0.4s ease, color 0.5s ease;
   display: flex;
   flex-direction: column;
-  max-height: 80dvh;           /* limit height to dynamic viewport */
-  overflow: hidden;            /* internal scroll handled in .modal-content */
+  max-height: calc(var(--vh) * 80); /* dynamic viewport height */
+  overflow: hidden;                 /* internal scroll handled by .modal-content */
   gap: 0;
   margin: auto;
 }
@@ -1000,13 +999,12 @@ body:not(.light-mode) .modal-header {
   .modal-backdrop {
     padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 0.5rem)
              env(safe-area-inset-bottom, 0.5rem) env(safe-area-inset-left, 0.5rem);
-    height: 100dvh;
-    min-height: -webkit-fill-available; /* ensure full mobile coverage */
+    height: calc(var(--vh) * 100);
   }
 
   .modal-card {
     width: 95%;
-    max-height: 80dvh;  /* dynamic viewport height */
+    max-height: calc(var(--vh) * 80);
     margin: auto;
     border-radius: 16px;
   }
