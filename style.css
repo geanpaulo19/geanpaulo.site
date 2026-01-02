@@ -117,6 +117,7 @@ body {
   left: 0;
   backface-visibility: hidden;
   transition: transform 0.6s;
+  pointer-events: all; /* <-- allow taps on both sides */
 }
 
 /* Front side (photo) */
@@ -130,15 +131,32 @@ body {
   z-index: 1;
 }
 
-/* Flip effect on hover (desktop) or toggle class (mobile) */
-.hero-icon-flip:hover .flip-card-front,
+/* Flip effect on hover (desktop) */
+@media (hover: hover) {
+  .hero-icon-flip:hover .flip-card-front {
+    transform: rotateY(180deg);
+  }
+  .hero-icon-flip:hover .flip-card-back {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Flip effect for mobile toggle via .flip class */
 .hero-icon-flip.flip .flip-card-front {
   transform: rotateY(180deg);
 }
 
-.hero-icon-flip:hover .flip-card-back,
 .hero-icon-flip.flip .flip-card-back {
   transform: rotateY(0deg);
+}
+
+/* Ensure front starts facing forward and back is hidden initially */
+.hero-icon-flip .flip-card-front {
+  transform: rotateY(0deg);
+}
+
+.hero-icon-flip .flip-card-back {
+  transform: rotateY(180deg);
 }
 
 /* Retain original .hero-icon styles */
