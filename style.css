@@ -730,7 +730,7 @@ body.light-mode .nav-logo {
   .navbar {
     width: calc(100% - 3rem);
     max-width: none;
-    padding: 0.55rem 1.2rem;
+    padding: 0.8rem 1.2rem; /* ↑ increased from 0.55rem to 0.8rem for taller navbar */
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
@@ -744,7 +744,7 @@ body.light-mode .nav-logo {
   }
   .navbar .mode-toggle {
     font-size: 0.95rem;
-    padding: 0.35rem 0.55rem;
+    padding: 0.45rem 0.65rem; /* ↑ slightly bigger to match taller navbar */
   }
 }
 
