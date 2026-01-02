@@ -731,7 +731,7 @@ body.light-mode .nav-logo {
     width: calc(100% - 3rem);
     max-width: none;
     padding: 0.65rem 1.2rem; /* vertical padding for touch comfort */
-    top: 0.8rem;             /* adjusted top margin */
+    top: 0.6rem;             /* adjusted top margin */
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
