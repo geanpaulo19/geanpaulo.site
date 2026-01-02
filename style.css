@@ -36,19 +36,19 @@ body {
 .wrap {
   max-width: 1000px;
   margin: auto;
-  padding: 6rem 1.5rem;
+  padding: 6rem 1.5rem 3rem; /* bottom only */
 }
 
 @media (max-width: 1024px) {
   .wrap {
     max-width: 900px;
-    padding: 6rem 1.5rem;
+    padding: 6rem 1.5rem 3rem; /* bottom only */
   }
 }
 
 @media (max-width: 600px) {
   .wrap {
-    padding: 4rem 1.5rem;
+    padding: 4rem 1.5rem 2.5rem; /* bottom only */
   }
 }
 
