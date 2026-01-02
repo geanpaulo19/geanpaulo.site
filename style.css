@@ -1,3 +1,6 @@
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root {
   --bg: #0e0e11;
   --fg: #f5f5f7;
@@ -13,7 +16,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ---------- BODY ---------- */
+/* =========================
+   BODY
+========================= */
 body {
   margin: 0;
   background: var(--bg);
@@ -22,7 +27,9 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* ---------- WRAP ---------- */
+/* =========================
+   WRAP / CONTAINER
+========================= */
 .wrap {
   max-width: 1000px;
   margin: auto;
@@ -42,7 +49,9 @@ body {
   }
 }
 
-/* ---------- HERO ---------- */
+/* =========================
+   HERO SECTION
+========================= */
 .hero {
   text-align: center;
   padding-top: 5rem; /* adjusted top padding for navbar */
@@ -95,7 +104,9 @@ body {
   transition: border-color 0.5s ease;
 }
 
-/* ---------- STATUS & CONTACT ---------- */
+/* =========================
+   STATUS & CONTACT
+========================= */
 .status-container {
   display: flex;
   align-items: center;
@@ -159,7 +170,9 @@ body {
   transform: scale(1.05);
 }
 
-/* ---------- WORK ---------- */
+/* =========================
+   WORK SECTION
+========================= */
 .work {
   margin-top: 6rem;
 }
@@ -171,7 +184,9 @@ body {
   text-align: center;
 }
 
-/* ---------- PROJECT GRID ---------- */
+/* =========================
+   PROJECT GRID
+========================= */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -255,7 +270,9 @@ body {
   font-weight: 500;
 }
 
-/* ---------- FILTER ---------- */
+/* =========================
+   PROJECT FILTER
+========================= */
 .project-filter {
   display: flex;
   flex-wrap: wrap;
@@ -282,11 +299,13 @@ body {
   border-color: var(--accent);
 }
 
-/* ---------- FOOTER ---------- */
+/* =========================
+   FOOTER
+========================= */
 footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* faint line in dark mode */
-  padding-top: 1.5rem; /* spacing above the line */
-  margin-top: 0;        /* remove extra margin; spacing controlled by CTA bottom */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -316,7 +335,15 @@ footer {
   color: var(--muted);
 }
 
-/* ---------- RESPONSIVE MOBILE ---------- */
+.footer-rotate {
+  display: inline-block;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
 @media (max-width: 600px) {
   footer {
     flex-direction: column;
@@ -353,7 +380,9 @@ footer {
   }
 }
 
-/* ---------- MOTION ---------- */
+/* =========================
+   ANIMATIONS / MOTION
+========================= */
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -367,7 +396,9 @@ footer {
   }
 }
 
-/* ---------- MODE TOGGLE ---------- */
+/* =========================
+   MODE TOGGLE
+========================= */
 .mode-toggle {
   position: fixed;
   top: 1.5rem;
@@ -392,7 +423,9 @@ footer {
   transform: rotate(360deg) scale(1.2);
 }
 
-/* ---------- LIGHT MODE ---------- */
+/* =========================
+   LIGHT MODE OVERRIDES
+========================= */
 body.light-mode {
   --bg: #f5f5f7;
   --fg: #0e0e11;
@@ -400,18 +433,15 @@ body.light-mode {
   --accent: #8b8bff;
 }
 
-/* Light mode project background */
 body.light-mode .project {
   background: rgba(0,0,0,0.05);
 }
 
-/* Light mode status pill */
 body.light-mode .status-pill {
   background: rgba(0,255,0,0.15);
   color: #0a0;
 }
 
-/* Light mode project filter buttons match project card background */
 body.light-mode .project-filter button {
   background: rgba(0,0,0,0.05);
   border: 1px solid rgba(0,0,0,0.05);
@@ -425,7 +455,18 @@ body.light-mode .project-filter button.active {
   border-color: var(--accent);
 }
 
-/* ---------- CUSTOM CURSOR ---------- */
+body.light-mode .cta-card {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--fg);
+}
+
+body.light-mode footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
 .cursor {
   position: fixed;
   width: 20px;
@@ -447,7 +488,9 @@ body.light-mode .project-filter button.active {
   transform: translate(-50%, -50%) scale(0.8);
 }
 
-/* ---------- HERO QUOTE ---------- */
+/* =========================
+   HERO QUOTE
+========================= */
 .hero-quote {
   font-size: 0.85rem;
   color: var(--muted);
@@ -455,7 +498,9 @@ body.light-mode .project-filter button.active {
   font-style: italic;
 }
 
-/* ---------- NAVBAR (NARROW PILL, THEME-AWARE) ---------- */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
   position: fixed;
   top: 1rem;
@@ -486,9 +531,8 @@ body.dark-mode .navbar {
   color: var(--fg);
 }
 
-/* Navbar logo */
 .navbar .nav-logo {
-  width: 1.8rem; /* same as the emoji font-size */
+  width: 1.8rem;
   height: auto;
   cursor: default;
   transition: transform 0.3s ease, filter 0.5s ease;
@@ -498,12 +542,10 @@ body.dark-mode .navbar {
   transform: scale(1.2);
 }
 
-/* Light mode: invert the white SVG to black */
 body.light-mode .nav-logo {
   filter: invert(1);
 }
 
-/* ---------- HELLO ROTATING ---------- */
 .nav-hello {
   display: inline-block;
   margin-left: 0.6rem;
@@ -519,7 +561,6 @@ body.light-mode .nav-logo {
   transform: scale(1.2);
 }
 
-/* Mode toggle inside navbar */
 .navbar .mode-toggle {
   margin: 0;
   padding: 0.35rem 0.6rem;
@@ -540,7 +581,7 @@ body.light-mode .nav-logo {
   transform: scale(1.05);
 }
 
-/* ---------- TABLET / LAPTOP ---------- */
+/* TABLET / LAPTOP RESPONSIVE */
 @media (max-width: 1024px) {
   .navbar {
     width: 55%;
@@ -560,7 +601,7 @@ body.light-mode .nav-logo {
   }
 }
 
-/* ---------- MOBILE ---------- */
+/* MOBILE NAVBAR */
 @media (max-width: 600px) {
   .navbar {
     width: calc(100% - 3rem);
@@ -583,14 +624,16 @@ body.light-mode .nav-logo {
   }
 }
 
-/* ---------- SKILLS ICONS ---------- */
+/* =========================
+   SKILLS
+========================= */
 .skills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
   margin-top: 1rem;
-  justify-content: center; /* center for desktop */
-  align-items: center;     /* vertical alignment */
+  justify-content: center;
+  align-items: center;
 }
 
 .skill {
@@ -598,12 +641,12 @@ body.light-mode .nav-logo {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 1rem;
-  background: rgba(255, 255, 255, 0.07); /* subtle pill bg */
+  background: rgba(255, 255, 255, 0.07);
   border-radius: 999px;
   font-size: 0.95rem;
   color: var(--muted);
-  min-width: 100px;        /* uniform width for pills */
-  justify-content: center;  /* center icon + text */
+  min-width: 100px;
+  justify-content: center;
   white-space: nowrap;
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
@@ -615,7 +658,6 @@ body.light-mode .nav-logo {
   transition: transform 0.3s ease;
 }
 
-/* Hover effects */
 .skill:hover {
   background: var(--accent);
   color: var(--bg);
@@ -626,10 +668,9 @@ body.light-mode .nav-logo {
   transform: scale(1.3);
 }
 
-/* ---------- MOBILE ADJUSTMENTS ---------- */
 @media (max-width: 600px) {
   .skills {
-    justify-content: flex-start; /* align left on mobile */
+    justify-content: flex-start;
   }
   .skill {
     font-size: 0.9rem;
@@ -642,10 +683,12 @@ body.light-mode .nav-logo {
   }
 }
 
-/* ================= CALL TO ACTION ================= */
+/* =========================
+   CALL TO ACTION (CTA)
+========================= */
 .cta-section {
   margin-top: 6rem;
-  margin-bottom: 2rem; /* reduce gap to footer */
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -655,12 +698,12 @@ body.light-mode .nav-logo {
   border-radius: 16px;
   padding: 2rem 2.5rem;
   display: flex;
-  flex-direction: row; /* two-column layout */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
   width: 100%;
-  max-width: 1000px; /* match .wrap container width */
+  max-width: 1000px;
   transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
@@ -714,13 +757,6 @@ body.light-mode .nav-logo {
   transform: scale(1.05);
 }
 
-/* Light mode CTA card background (match project cards) */
-body.light-mode .cta-card {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--fg);
-}
-
-/* ---------- RESPONSIVE MOBILE ---------- */
 @media (max-width: 768px) {
   .cta-card {
     flex-direction: column;
@@ -738,10 +774,12 @@ body.light-mode .cta-card {
   }
 }
 
-/* ---------- FOOTER DIVIDER ---------- */
+/* =========================
+   FOOTER DIVIDER
+========================= */
 footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1); /* faint line in dark mode */
-  padding-top: 1.5rem; /* optional, for spacing above the line */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
   margin-top: 6rem;
   display: flex;
   justify-content: space-between;
@@ -752,13 +790,196 @@ footer {
   transition: border-color 0.5s ease;
 }
 
-/* Light mode divider */
-body.light-mode footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1); /* subtle in light mode */
+/* HERO NAME INLINE WRAPPER */
+.hero-name-inline {
+  display: inline-block;
+  position: relative; /* for absolute icon positioning */
+  cursor: pointer;
+  text-align: center; /* center the text inside */
 }
 
-.footer-rotate {
+/* NAME TEXT */
+.hero-name-text {
   display: inline-block;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* INFO ICON - absolutely positioned so it doesn't shift the name */
+.info-icon {
+  position: absolute;
+  right: -25px; /* distance from the right edge of name text */
+  top: 50%;
+  transform: translateY(-50%) scale(0.8);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(139,139,255,0.2);
+  color: var(--accent);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Show icon on hover/focus */
+.hero-name-inline:hover .info-icon,
+.hero-name-inline:focus .info-icon {
   opacity: 1;
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; /* allow scrolling if content is taller than viewport */
+  padding: 2rem; /* spacing from top/bottom on mobile */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 2000;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 520px; /* default width */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(20px);
+  transition: transform 0.4s ease, color 0.5s ease;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  /* For scrollable content on small screens */
+  max-height: calc(100vh - 4rem); /* stay inside viewport */
+  overflow-y: auto;
+}
+
+.modal-backdrop.active .modal-card {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+  color: var(--accent);
+}
+
+/* Headings inside modal */
+.modal-card h2,
+.modal-card h3 {
+  color: var(--fg);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Paragraphs and list items inside modal */
+.modal-card p,
+.modal-card li {
+  color: var(--muted);
+  margin: 0; /* remove default margin to control spacing via flex/gap */
+  line-height: 1.7;
+}
+
+/* Lists inside modal */
+.modal-card ul {
+  padding-left: 1.3rem;
+  margin: 0;
+}
+
+/* Modal grid layout */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* always single column */
+  gap: 1.5rem; /* spacing between sections */
+  margin-top: 1rem;
+}
+
+/* Individual grid items: control spacing inside each section */
+.modal-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* spacing between h3 and content */
+}
+
+/* Section lines container for multiple paragraphs/lists */
+.section-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* smaller spacing for multiple lines */
+  margin: 0;
+}
+
+.section-lines p {
+  margin: 0; /* ensure no extra margin */
+}
+
+/* Heading margin */
+.modal-grid h3 {
+  margin: 0 0 0.3rem 0;
+}
+
+/* Links inside modal */
+.modal-card a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.modal-card a:hover {
+  color: var(--fg);
+}
+
+/* Wider modal on larger screens */
+@media (min-width: 700px) {
+  .modal-card {
+    max-width: 650px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal-card {
+    max-width: 750px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .modal-card {
+    padding: 1.5rem;
+    max-height: calc(100vh - 2rem); /* allow scrolling */
+  }
+
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
