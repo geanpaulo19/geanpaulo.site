@@ -96,6 +96,52 @@ body {
   line-height: 1.7;
 }
 
+/* Flip container */
+.hero-icon-flip {
+  width: 120px;
+  height: 120px;
+  perspective: 1000px; /* 3D perspective for flip */
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Both sides */
+.hero-icon-flip .flip-card-front,
+.hero-icon-flip .flip-card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* keep circular */
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+}
+
+/* Front side (photo) */
+.hero-icon-flip .flip-card-front {
+  z-index: 2;
+}
+
+/* Back side (QR code) */
+.hero-icon-flip .flip-card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* Flip effect on hover (desktop) or toggle class (mobile) */
+.hero-icon-flip:hover .flip-card-front,
+.hero-icon-flip.flip .flip-card-front {
+  transform: rotateY(180deg);
+}
+
+.hero-icon-flip:hover .flip-card-back,
+.hero-icon-flip.flip .flip-card-back {
+  transform: rotateY(0deg);
+}
+
+/* Retain original .hero-icon styles */
 .hero-icon {
   width: 120px;
   height: 120px;
@@ -103,8 +149,16 @@ body {
   object-fit: cover;
   display: inline-block;
   margin: 0 0 1rem 0;
-  border: 3px solid var(--accent);
-  transition: border-color 0.5s ease;
+  border: 3px solid var(--accent); /* purple border */
+  transition: border-color 0.5s ease, transform 0.6s ease;
+}
+
+/* QR Code styling */
+.qr-code {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* =========================
