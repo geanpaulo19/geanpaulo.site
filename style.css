@@ -14,17 +14,20 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%; 
+  min-height: 100dvh; /* dynamic viewport for mobile */
 }
 
-/* =========================
-   BODY
-========================= */
 body {
   margin: 0;
+  height: 100%;
+  min-height: 100dvh; /* dynamic viewport for mobile */
   background: var(--bg);
   color: var(--fg);
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
   transition: background 0.5s ease, color 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 /* =========================
@@ -840,10 +843,10 @@ footer {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   display: flex;
-  align-items: center; /* vertical center */
-  justify-content: center;
-  overflow-y: auto; /* allow scrolling if viewport too small */
-  padding: 2rem;
+  align-items: center;       /* vertical center */
+  justify-content: center;   /* horizontal center */
+  overflow-y: auto;          /* allow scrolling if viewport too small */
+  padding: 1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -864,14 +867,12 @@ footer {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   transform: translateY(20px);
   transition: transform 0.4s ease, color 0.5s ease;
-  font-size: 1rem;
-  line-height: 1.6;
-
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 4rem); /* default max height */
-  overflow: hidden; /* internal scroll handled in .modal-content */
+  max-height: 80dvh; /* limit height to 80% of dynamic viewport */
+  overflow: hidden;  /* internal scroll handled in modal-content */
   gap: 0;
+  margin: auto;      /* vertical centering if shorter than max-height */
 }
 
 .modal-backdrop.active .modal-card {
@@ -879,7 +880,7 @@ footer {
 }
 
 /* =========================
-   MODAL HEADER (Sticky & Theme-Aware)
+   MODAL HEADER
 ========================= */
 .modal-header {
   display: flex;
@@ -890,7 +891,7 @@ footer {
   position: sticky;
   top: 0;
   z-index: 10;
-  border-bottom: 1px solid rgba(0,0,0,0.2); /* light mode default */
+  border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 body:not(.light-mode) .modal-header {
@@ -923,11 +924,11 @@ body:not(.light-mode) .modal-header {
 }
 
 /* =========================
-   SCROLLABLE CONTENT
+   MODAL CONTENT
 ========================= */
 .modal-content {
   flex: 1 1 auto;
-  overflow-y: auto; /* internal scroll for tall content */
+  overflow-y: auto; /* scrollable content */
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -986,49 +987,24 @@ body:not(.light-mode) .modal-header {
   color: var(--fg);
 }
 
-/* Wider modal on larger screens */
-@media (min-width: 700px) {
-  .modal-card {
-    max-width: 650px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .modal-card {
-    max-width: 750px;
-  }
-}
-
 /* =========================
-   MOBILE IMPROVEMENTS
+   MODAL RESPONSIVE MOBILE
 ========================= */
 @media (max-width: 600px) {
   .modal-backdrop {
-    padding: 0.5rem; /* reduce padding */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* start at top if modal too tall */
-    overflow-y: auto;
+    padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 0.5rem)
+             env(safe-area-inset-bottom, 0.5rem) env(safe-area-inset-left, 0.5rem);
   }
 
   .modal-card {
     width: 95%;
-    max-height: 80vh;       /* limit modal height to 80% of viewport */
-    margin: auto;           /* vertical centering if shorter than 80vh */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;       /* prevent overflow outside card */
+    max-height: 80dvh;
+    margin: auto;
     border-radius: 16px;
   }
 
   .modal-content {
-    flex: 1 1 auto;
-    overflow-y: auto;       /* scrollable content */
     padding: 0.75rem 1rem 1rem 1rem;
-  }
-
-  .modal-grid {
-    gap: 1.5rem;
   }
 
   .modal-card h2 {
@@ -1037,10 +1013,6 @@ body:not(.light-mode) .modal-header {
 
   .modal-card h3 {
     font-size: 1rem;
-  }
-
-  .section-lines {
-    gap: 0.25rem;
   }
 
   .modal-card p {
