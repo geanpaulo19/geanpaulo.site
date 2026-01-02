@@ -369,19 +369,35 @@ document.addEventListener("DOMContentLoaded", () => {
    ABOUT MODAL LOGIC
 ====================== */
 const modal = document.getElementById("aboutModal");
-const openTrigger = document.getElementById("openAbout"); // matches your hero name span
-const closeBtn = modal.querySelector(".modal-close");    // matches your modal close button
+const openTrigger = document.getElementById("openAbout"); // hero name span
+const closeBtn = modal.querySelector(".modal-close");    // modal close button
+
+let scrollPos = 0; // store scroll position
 
 function openModal() {
+  scrollPos = window.scrollY || window.pageYOffset; // save scroll
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
+
+  // Lock scroll safely
   document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollPos}px`;
+  document.body.style.width = "100%";
 }
 
 function closeModal() {
   modal.classList.remove("active");
   modal.setAttribute("aria-hidden", "true");
+
+  // Unlock scroll
   document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.width = "";
+
+  // Restore scroll position
+  window.scrollTo(0, scrollPos);
 }
 
 // Open modal when hero name is clicked
