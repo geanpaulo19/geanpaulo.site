@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================
-   DYNAMIC VH FIX FOR MOBILE
+   DYNAMIC VH + MODAL FIX FOR MOBILE
 ========================= */
 function setVhProperty() {
   const vh = window.innerHeight * 0.01;
@@ -396,15 +396,40 @@ function updateModalHeight() {
   if (modalCard) modalCard.style.maxHeight = `${vh * 0.8}px`;
 }
 
-/* ======================
+/* =========================
    ABOUT MODAL LOGIC
-====================== */
+========================= */
 const modal = document.getElementById("aboutModal");
-const openTrigger = document.getElementById("openAbout"); // hero name span
-const closeBtn = modal.querySelector(".modal-close");    // modal close button
+const openTrigger = document.getElementById("openAbout");
+const closeBtn = modal.querySelector(".modal-close");
+
+let mobileOverlay = null;
+
+function createMobileOverlay() {
+  if (!mobileOverlay) {
+    mobileOverlay = document.createElement("div");
+    mobileOverlay.style.position = "fixed";
+    mobileOverlay.style.top = 0;
+    mobileOverlay.style.left = 0;
+    mobileOverlay.style.width = "100vw";
+    mobileOverlay.style.height = "100vh";
+    mobileOverlay.style.background = "transparent";
+    mobileOverlay.style.zIndex = "1999"; // just below modal
+    document.body.appendChild(mobileOverlay);
+  }
+}
+
+function removeMobileOverlay() {
+  if (mobileOverlay) {
+    mobileOverlay.remove();
+    mobileOverlay = null;
+  }
+}
 
 function openModal() {
   updateModalHeight(); // immediately adjust height
+  createMobileOverlay(); // fix persistent bars on mobile
+
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
@@ -417,6 +442,8 @@ function openModal() {
 function closeModal() {
   modal.classList.remove("active");
   modal.setAttribute("aria-hidden", "true");
+
+  removeMobileOverlay();
 
   // Unlock scroll
   document.body.style.overflow = "";
