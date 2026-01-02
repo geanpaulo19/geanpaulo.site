@@ -333,14 +333,12 @@ document.addEventListener("DOMContentLoaded", () => {
   "Debugging is my cardio 🏃‍♂️",
   "100% chaos, 0% boredom 🎉",
   "Made with love and mild insomnia 🌙",
-  "Keyboard warrior by day, nap enthusiast by night 😴",
   "Turning bugs into features… sometimes 🐛➡️✨",
   "Will code for tacos 🌮",
   "Ctrl + S is my life mantra 💾",
   "Procrastination level: expert 🕰️",
   "Powered by caffeine, curiosity, and chaos ⚡",
   "Pixel perfectionist with slight OCD 🎨",
-  "Errors? Just unexpected learning opportunities 🤓",
   "Coffee in one hand, code in the other ☕💻",
   "If it works, it works… if not, debug harder 🔧"
 ];
@@ -365,4 +363,39 @@ document.addEventListener("DOMContentLoaded", () => {
       footerSpan.style.transform = "translateY(0)";
     }, 500); // match transition duration
   }, 5000); // rotate every 5 seconds
+});
+
+/* ======================
+   ABOUT MODAL LOGIC
+====================== */
+const modal = document.getElementById("aboutModal");
+const openTrigger = document.getElementById("openAbout"); // matches your hero name span
+const closeBtn = modal.querySelector(".modal-close");    // matches your modal close button
+
+function openModal() {
+  modal.classList.add("active");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modal.classList.remove("active");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+// Open modal when hero name is clicked
+openTrigger.addEventListener("click", openModal);
+
+// Close modal when close button is clicked
+closeBtn.addEventListener("click", closeModal);
+
+// Close modal when clicking outside the card
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Close modal on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
 });
