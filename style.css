@@ -838,7 +838,7 @@ footer {
    MODAL
 ========================= */
 :root {
-  --vh: 1vh; /* fallback, will be updated by JS */
+  --vh: 1vh; /* fallback, updated by JS */
 }
 
 .modal-backdrop {
@@ -847,15 +847,16 @@ footer {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   display: flex;
-  align-items: center;       /* vertical center */
-  justify-content: center;   /* horizontal center */
-  overflow-y: auto;          /* allow scrolling if viewport too small */
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;           /* allow scrolling if viewport too small */
   padding: 1rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 2000;
-  height: calc(var(--vh) * 100); /* use dynamic viewport height */
+  height: 100dvh;             /* dynamic full viewport height */
+  min-height: -webkit-fill-available; /* Safari fix */
 }
 
 .modal-backdrop.active {
@@ -874,10 +875,10 @@ footer {
   transition: transform 0.4s ease, color 0.5s ease;
   display: flex;
   flex-direction: column;
-  max-height: calc(var(--vh) * 80); /* dynamic viewport height */
-  overflow: hidden;  /* internal scroll handled in modal-content */
+  max-height: 80dvh;           /* limit height to dynamic viewport */
+  overflow: hidden;            /* internal scroll handled in .modal-content */
   gap: 0;
-  margin: auto;      /* vertical centering if shorter than max-height */
+  margin: auto;
 }
 
 .modal-backdrop.active .modal-card {
@@ -933,7 +934,7 @@ body:not(.light-mode) .modal-header {
 ========================= */
 .modal-content {
   flex: 1 1 auto;
-  overflow-y: auto; /* scrollable content */
+  overflow-y: auto; /* scrollable inside modal */
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -999,11 +1000,13 @@ body:not(.light-mode) .modal-header {
   .modal-backdrop {
     padding: env(safe-area-inset-top, 0.5rem) env(safe-area-inset-right, 0.5rem)
              env(safe-area-inset-bottom, 0.5rem) env(safe-area-inset-left, 0.5rem);
+    height: 100dvh;
+    min-height: -webkit-fill-available; /* ensure full mobile coverage */
   }
 
   .modal-card {
     width: 95%;
-    max-height: calc(var(--vh) * 80);
+    max-height: 80dvh;  /* dynamic viewport height */
     margin: auto;
     border-radius: 16px;
   }
