@@ -365,31 +365,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 5000); // rotate every 5 seconds
 });
 
+/* =========================
+   DYNAMIC VH FIX FOR MOBILE
+========================= */
+function setVhProperty() {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set on page load
+setVhProperty();
+
+// Update on resize/orientation change
+window.addEventListener('resize', setVhProperty);
+window.addEventListener('orientationchange', setVhProperty);
+
 /* ======================
-   ABOUT MODAL LOGIC (MOBILE SAFE)
+   ABOUT MODAL LOGIC
 ====================== */
 const modal = document.getElementById("aboutModal");
 const openTrigger = document.getElementById("openAbout"); // hero name span
 const closeBtn = modal.querySelector(".modal-close");    // modal close button
 
-// --- Update --vh dynamic CSS variable for mobile viewport ---
-function updateVh() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-// Initial calculation
-updateVh();
-
-// Update on resize/orientation change
-window.addEventListener('resize', updateVh);
-window.addEventListener('orientationchange', updateVh);
-
 function openModal() {
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
 
-  // Only lock scroll on non-mobile devices
+  // Only lock scroll on non-mobile
   if (!/Mobi|Android/i.test(navigator.userAgent)) {
     document.body.style.overflow = "hidden";
   }
@@ -401,9 +403,6 @@ function closeModal() {
 
   // Unlock scroll
   document.body.style.overflow = "";
-  
-  // Recalculate viewport height after closing to prevent bars
-  updateVh();
 }
 
 // Open modal when hero name is clicked
