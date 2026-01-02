@@ -548,27 +548,6 @@ footer {
 }
 
 /* =========================
-   MOBILE MODE TOGGLE FIX
-========================= */
-@media (max-width: 600px) {
-  .mode-toggle {
-    background: var(--accent); /* purple by default on mobile */
-    color: var(--bg);
-  }
-
-  .mode-toggle:hover {
-    background: var(--fg);
-    color: var(--bg);
-  }
-
-  .mode-toggle.animate {
-    transform: rotate(360deg) scale(1.2);
-    background: var(--accent); /* ensure it stays purple during animation */
-    color: var(--bg);
-  }
-}
-
-/* =========================
    LIGHT MODE OVERRIDES
 ========================= */
 body.light-mode {
