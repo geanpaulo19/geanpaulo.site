@@ -852,9 +852,11 @@ footer {
   transition: opacity 0.4s ease;
   z-index: 2000;
 
-  /* Full screen height */
-  height: 100%;
-  min-height: -webkit-fill-available; /* Safari fix */
+  /* Full screen but avoid forcing vh on mobile */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overscroll-behavior: contain;
 }
 
@@ -875,7 +877,7 @@ footer {
   display: flex;
   flex-direction: column;
 
-  /* Max height for mobile to prevent top/bottom bars */
+  /* Mobile-safe max height, leaves space for browser bars */
   max-height: 80%;
   overflow: hidden;
   margin: auto;
@@ -1002,15 +1004,11 @@ body:not(.light-mode) .modal-header {
              env(safe-area-inset-right, 0.5rem)
              env(safe-area-inset-bottom, 0.5rem)
              env(safe-area-inset-left, 0.5rem);
-
-    height: 100%;
-    min-height: -webkit-fill-available;
-    overscroll-behavior: contain;
   }
 
   .modal-card {
     width: 95%;
-    max-height: 80%;
+    max-height: 80%;  /* keeps modal from hitting top/bottom bars */
     margin: auto;
     border-radius: 16px;
   }
