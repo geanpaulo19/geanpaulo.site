@@ -9,7 +9,7 @@
   <!-- Title -->
   <title>404 – Page Not Found | Gean Paulo</title>
 
-    <!-- ================= FAVICON ================= -->
+  <!-- ================= FAVICON ================= -->
   <link
     rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
@@ -18,17 +18,17 @@
   <!-- SEO: prevent indexing of 404 pages -->
   <meta name="robots" content="noindex, nofollow">
 
-  <!-- Description (still useful for UX & logs, even if noindex) -->
+  <!-- Description -->
   <meta name="description" content="The page you are looking for could not be found. Return to the homepage of Gean Paulo to continue exploring projects and work.">
 
-  <!-- Canonical (points to homepage, not the missing URL) -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://geanpaulo.com/">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="dark-mode">
+<body>
   <main class="wrap page-404 fade" role="main">
 
     <!-- Primary heading -->
@@ -50,5 +50,19 @@
     </a>
 
   </main>
+
+  <!-- =========================
+       THEME DETECTION SCRIPT
+  ========================= -->
+  <script>
+    const body = document.body;
+
+    // Apply system preference on load
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
+    } else {
+      body.classList.add('light-mode');
+    }
+  </script>
 </body>
 </html>
