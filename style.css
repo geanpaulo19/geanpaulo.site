@@ -6,6 +6,30 @@
   --fg: #f5f5f7;
   --muted: #9a9aa3;
   --accent: #8b8bff;
+
+  /* =========================
+     LIQUID GLASS VARIABLES
+  ========================== */
+  --liquid-glass-bg: 
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.05)
+    );
+  --liquid-glass-backdrop: blur(10px) saturate(160%);
+  --liquid-glass-border: 1px solid rgba(255, 255, 255, 0.2);
+  --liquid-glass-box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+  --liquid-glass-hover-bg:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.12)
+    );
+  --liquid-glass-hover-box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -54,26 +78,26 @@ body {
 }
 
 body.light-mode {
-  background: var(--bg);
+  background: #f0f0f0; /* lighter soft light background */
   background-image:
     repeating-linear-gradient(
       45deg,
-      rgba(0, 0, 0, 0.0015),  /* super faint black lines */
-      rgba(0, 0, 0, 0.0015) 1px,
+      rgba(0, 0, 0, 0.001) ,  /* even fainter black lines */
+      rgba(0, 0, 0, 0.001) 1px,
       transparent 1px,
       transparent 5px
     ),
     repeating-linear-gradient(
       50deg,
-      rgba(0, 0, 0, 0.0012),
-      rgba(0, 0, 0, 0.0012) 1px,
+      rgba(0, 0, 0, 0.0008),
+      rgba(0, 0, 0, 0.0008) 1px,
       transparent 1px,
       transparent 6px
     ),
     repeating-linear-gradient(
       40deg,
-      rgba(0, 0, 0, 0.001),
-      rgba(0, 0, 0, 0.001) 1px,
+      rgba(0, 0, 0, 0.0005),
+      rgba(0, 0, 0, 0.0005) 1px,
       transparent 1px,
       transparent 7px
     );
@@ -276,7 +300,16 @@ body.light-mode {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
+
+  /* Keep purple accent while adding liquid glass look */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.08)
+    ),
+    var(--accent);
+
   color: var(--bg);
   padding: 0.35rem 0.9rem;
   border-radius: 999px;
@@ -285,13 +318,32 @@ body.light-mode {
   text-decoration: none;
   cursor: pointer;
   height: 32px;
+
+  /* Liquid glass */
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
   transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-  background: var(--fg);
-  color: var(--bg);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.45),
+      rgba(255, 255, 255, 0.15)
+    ),
+    var(--accent);
+
   transform: scale(1.05);
+  color: var(--bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* =========================
@@ -438,21 +490,47 @@ body.light-mode {
 }
 
 .project-filter button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Subtle default background for inactive buttons */
   background: rgba(255, 255, 255, 0.03);
   color: var(--muted);
-  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 999px;
   padding: 0.3rem 0.8rem;
   cursor: pointer;
   font-size: 0.85rem;
+  border: 1px solid rgba(255,255,255,0.2);
+
   transition: all 0.3s ease;
 }
 
 .project-filter button:hover,
 .project-filter button.active {
-  background: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Vibrant liquid glass for hover/active */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.2)
+    ),
+    rgba(139, 139, 255, 1); /* accent purple */
+
   color: var(--bg);
-  border-color: var(--accent);
+  border-color: rgba(139, 139, 255, 1);
+  border-radius: 999px;
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 6px 16px rgba(0, 0, 0, 0.3);
+
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -668,25 +746,73 @@ body.light-mode footer {
   width: 46%;
   max-width: 380px;
   padding: 0.55rem 1rem;
-  background: rgba(14, 14, 17, 0.85);
-  backdrop-filter: blur(12px);
+
+  /* More translucent liquid glass background */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.08), /* softer gradient */
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(14, 14, 17, 0.55); /* reduced opacity for translucency */
+
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
   border-radius: 999px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+
+  /* Glass border + depth */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 20px rgba(0, 0, 0, 0.35);
+
   z-index: 1001;
-  transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
   color: var(--fg);
 }
 
+.navbar:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+   LIGHT / DARK MODE
+========================= */
 body.light-mode .navbar {
-  background: rgba(245, 245, 247, 0.85);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.3)
+    ),
+    rgba(245, 245, 247, 0.45); /* softer, more translucent */
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 4px 20px rgba(0, 0, 0, 0.15);
+
   color: var(--fg);
 }
 
 body.dark-mode .navbar {
-  background: rgba(14, 14, 17, 0.85);
   color: var(--fg);
 }
 
+/* =========================
+   NAV LOGO
+========================= */
 .navbar .nav-logo {
   width: 1.9rem;
   height: auto;
@@ -702,6 +828,9 @@ body.light-mode .nav-logo {
   filter: invert(1);
 }
 
+/* =========================
+   GREETING TEXT
+========================= */
 .nav-hello {
   display: inline-block;
   margin-left: 0.6rem;
@@ -717,6 +846,9 @@ body.light-mode .nav-logo {
   transform: scale(1.2);
 }
 
+/* =========================
+   MODE TOGGLE
+========================= */
 .navbar .mode-toggle {
   margin: 0;
   padding: 0.35rem 0.6rem;
@@ -724,71 +856,120 @@ body.light-mode .nav-logo {
   top: auto;
   right: auto;
   position: relative;
-  background: var(--accent);
+
+  /* Liquid glass button */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.12)
+    ),
+    var(--accent);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   color: var(--bg);
   border-radius: 999px;
   cursor: pointer;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
   transition: all 0.3s ease;
 }
 
 .navbar .mode-toggle:hover {
-  background: var(--fg);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.2)
+    ),
+    var(--fg);
+
   color: var(--bg);
   transform: scale(1.05);
 }
 
-/* TABLET / LAPTOP RESPONSIVE */
+/* =========================
+   TABLET / LAPTOP RESPONSIVE
+========================= */
 @media (max-width: 1024px) {
   .navbar {
     width: 55%;
     max-width: 340px;
     padding: 0.5rem 0.9rem;
+
+    /* maintain translucent effect on smaller screens */
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+      ),
+      rgba(14, 14, 17, 0.55);
   }
+
   .navbar .nav-emoji {
     font-size: 1.6rem;
   }
+
   .navbar .mode-toggle {
     font-size: 1rem;
     padding: 0.35rem 0.55rem;
   }
+
   .nav-hello {
     font-size: 0.95rem;
     margin-left: 0.5rem;
   }
 }
 
-/* MOBILE NAVBAR */
+/* =========================
+   MOBILE NAVBAR
+========================= */
 @media (max-width: 600px) {
   .navbar {
     width: calc(100% - 3rem);
     max-width: none;
-    padding: 0.5rem 0.8rem 0.5rem 1rem; /* top right bottom left */
+    padding: 0.5rem 0.8rem 0.5rem 1rem;
     top: 0.6rem;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 999px;
 
     display: flex;
-    align-items: center;        /* vertical centering */
-    justify-content: space-between; /* left greeting + right toggle */
+    align-items: center;
+    justify-content: space-between;
+
+    /* maintain translucent effect on mobile */
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.08),
+        rgba(255, 255, 255, 0.02)
+      ),
+      rgba(14, 14, 17, 0.55);
   }
 
-  /* Greeting text */
   .nav-hello {
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--fg);
     display: flex;
-    align-items: center;       /* perfect vertical center */
-    margin: 0;                 /* remove any extra margin */
+    align-items: center;
+    margin: 0;
   }
 
-  /* Perfect circle mode toggle */
   .navbar .mode-toggle {
     font-size: 0.95rem;
-    width: 2.2rem;    /* slightly smaller to match new padding */
-    height: 2.2rem;   
-    padding: 0;       
+    width: 2.2rem;
+    height: 2.2rem;
+    padding: 0;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -911,7 +1092,16 @@ body.light-mode .nav-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
+
+  /* Vibrant purple liquid glass like contact-btn */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.12)
+    ),
+    var(--accent);
+
   color: var(--bg);
   padding: 0.6rem 1.2rem;
   border-radius: 999px;
@@ -919,12 +1109,32 @@ body.light-mode .nav-logo {
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
+
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.25);
+
   transition: all 0.3s ease;
 }
 
 .cta-btn:hover {
-  background: var(--fg);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.2)
+    ),
+    var(--accent);
+
   color: var(--bg);
+  border-color: var(--accent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 6px 16px rgba(0, 0, 0, 0.3);
+
   transform: scale(1.05);
 }
 
@@ -1239,19 +1449,51 @@ body:not(.light-mode) .modal-header {
 }
 
 .about-more {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-left: 0.3rem;        /* tiny spacing from the sentence */
-  padding: 0.1rem 0.4rem;     /* smaller vertical + horizontal padding */
-  font-size: 0.7rem;           /* slightly smaller text */
+  padding: 0.25rem 0.7rem;    /* slightly bigger for liquid glass feel */
+  font-size: 0.75rem;         /* slightly bigger text for readability */
   font-weight: 500;
   color: var(--accent);
-  background: rgba(139, 139, 255, 0.15); /* very subtle background */
+
+  /* Muted purple background with subtle liquid glass effect */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(139, 139, 255, 0.15);   /* muted purple */
+
   border-radius: 999px;        /* pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.12);
+
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .about-more:hover {
-  background: rgba(139, 139, 255, 0.25); /* subtle hover effect */
-  transform: scale(1.05);               /* slight zoom */
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.05)
+    ),
+    rgba(139, 139, 255, 0.2);   /* slightly stronger muted purple on hover */
+
+  color: var(--accent);
+  border-color: rgba(139, 139, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.18);
+
+  transform: scale(1.05);
 }
