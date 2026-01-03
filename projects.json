@@ -7,25 +7,25 @@
     "tags": ["Web", "Creative"]
   },
   {
-  "title": "Zen New Tab",
-  "description": "A minimalistic, customizable new tab extension with quick links, weather, quotes, and a smooth dark/light interface for productivity and aesthetics.",
-  "url": "https://github.com/geanpaulo19/zen-new-tab",
-  "image": "assets/images/zentab.png",
-  "tags": ["Web Extension", "Productivity"]
-},
-  {
     "title": "Gradient Generator",
     "description": "Easily create beautiful gradients with customizable colors. Users can export their designs for use in websites, graphics, and apps.",
     "url": "https://gradiently.netlify.app",
     "image": "assets/images/gradiently.png",
-    "tags": ["Tool", "Design"]
+    "tags": ["Tool", "Creative"]
+  },
+  {
+    "title": "Zen New Tab",
+    "description": "A minimalistic, customizable new tab extension with quick links, weather, quotes, and a smooth dark/light interface for productivity and aesthetics.",
+    "url": "https://github.com/geanpaulo19/zen-new-tab",
+    "image": "assets/images/zentab.png",
+    "tags": ["Web", "Productivity"]
   },
   {
     "title": "QR & Barcode Generator",
     "description": "Create QR codes and barcodes with responsive, modern UX. The generator supports multiple formats and offers instant downloads.",
     "url": "https://qrocket.netlify.app",
     "image": "assets/images/qrocket.png",
-    "tags": ["Web App", "Utility"]
+    "tags": ["Tool", "Utility"]
   },
   {
     "title": "Finetouch Maintenance",
@@ -60,7 +60,7 @@
     "description": "Countdown timer designed for focus. Users can set multiple sessions and track their productivity easily.",
     "url": "https://pomochi.netlify.app",
     "image": "assets/images/pomochi.png",
-    "tags": ["Web App", "Productivity"]
+    "tags": ["Web", "Productivity"]
   },
   {
     "title": "Simple Invoice Generator",
