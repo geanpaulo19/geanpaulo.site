@@ -338,15 +338,21 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   width: 100%; /* fill the grid column fully */
   box-sizing: border-box;
+
+  /* Smooth transitions for hover effects */
+  transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease, 
+    background 0.5s ease, 
+    color 0.5s ease;
 }
 
 .project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  transform: scale(1.03); /* subtle card zoom */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35); /* soft shadow on hover */
 }
 
 .project-link {
@@ -368,8 +374,8 @@ body.light-mode {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.5s ease;
 }
 
-.project-link:hover .project-icon {
-  transform: scale(1.1);
+.project:hover .project-icon {
+  transform: scale(1.1); /* icon zoom with card */
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
