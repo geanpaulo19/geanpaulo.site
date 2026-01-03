@@ -427,6 +427,8 @@ document.addEventListener("keydown", (e) => {
 window.addEventListener("resize", centerModal);
 window.addEventListener("orientationchange", centerModal);
 
+document.querySelector('.about-more').addEventListener('click', openModal);
+
 // Select the flip container
 const heroFlip = document.querySelector('.hero-icon-flip');
 
