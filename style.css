@@ -964,50 +964,6 @@ footer {
   transition: border-color 0.5s ease;
 }
 
-/* HERO NAME INLINE WRAPPER */
-.hero-name-inline {
-  display: inline-block;
-  position: relative; /* for absolute icon positioning */
-  cursor: pointer;
-  text-align: center; /* center the text inside */
-}
-
-/* NAME TEXT */
-.hero-name-text {
-  display: inline-block;
-}
-
-.info-icon {
-  position: absolute;
-  right: -25px;
-  top: 50%;
-  transform: translateY(-50%) scale(0.8);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(139,139,255,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  color: var(--accent); /* SVG inherits */
-}
-
-.hero-name-inline:hover .info-icon,
-.hero-name-inline:focus .info-icon {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
-  pointer-events: auto;
-}
-
-.info-icon svg {
-  display: block;
-  width: 16px; /* larger */
-  height: 16px; /* larger */
-}
-
 /* =========================
    MODAL
 ========================= */
