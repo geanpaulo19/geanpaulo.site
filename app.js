@@ -433,3 +433,46 @@ const heroFlip = document.querySelector('.hero-icon-flip');
 heroFlip.addEventListener('click', () => {
   heroFlip.classList.toggle('flip'); // toggle the 'flip' class on each click
 });
+
+const renderProjects = (filteredProjects) => {
+  const currentProjects = Array.from(container.children);
+
+  // --- Fade out existing cards ---
+  currentProjects.forEach((card, i) => {
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(15px)';
+  });
+
+  // Wait for fade-out to finish before removing old cards
+  setTimeout(() => {
+    container.innerHTML = '';
+
+    // --- Render new cards ---
+    filteredProjects.forEach((project, index) => {
+      const div = document.createElement('div');
+      div.className = 'project fade';
+
+      const tagsHTML = project.tags?.map(tag => `<span class="project-tag">${tag}</span>`).join(' ') || '';
+
+      div.innerHTML = `
+        <a href="${project.url}" target="_blank" class="project-link">
+          <img class="project-icon" src="${project.image}" alt="${project.title}">
+          <div class="project-info">
+            <h3>${project.title}</h3>
+            <div class="project-tags">
+              ${tagsHTML}
+            </div>
+            <p>${project.description}</p>
+          </div>
+        </a>
+      `;
+
+      container.appendChild(div);
+
+      // Trigger staggered fade-in
+      setTimeout(() => {
+        div.classList.add('show');
+      }, index * 60); // 60ms per card
+    });
+  }, 150); // fade-out duration
+};
