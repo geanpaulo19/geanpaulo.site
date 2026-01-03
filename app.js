@@ -369,14 +369,11 @@ document.addEventListener("DOMContentLoaded", () => {
    ABOUT MODAL LOGIC
 ====================== */
 const modal = document.getElementById("aboutModal");
-const openTrigger = document.getElementById("openAbout"); // hero name span
-const closeBtn = modal.querySelector(".modal-close");    // modal close button
+const closeBtn = modal.querySelector(".modal-close");    
 const modalCard = modal.querySelector(".modal-card");
 
 function centerModal() {
-  // Ensures modal is vertically centered even if viewport changes (iOS bars, keyboard, etc.)
   if (!modal.classList.contains("active")) return;
-
   const viewportHeight = window.innerHeight;
   const cardHeight = modalCard.offsetHeight;
   const marginTop = Math.max((viewportHeight - cardHeight) / 2, 10);
@@ -387,28 +384,20 @@ function centerModal() {
 function openModal() {
   modal.classList.add("active");
   modal.setAttribute("aria-hidden", "false");
-
-  // Lock background scroll
   document.body.style.overflow = "hidden";
-
-  // Center the modal
   centerModal();
 }
 
 function closeModal() {
   modal.classList.remove("active");
   modal.setAttribute("aria-hidden", "true");
-
-  // Unlock background scroll
   document.body.style.overflow = "";
-
-  // Reset modal margins
   modalCard.style.marginTop = "";
   modalCard.style.marginBottom = "";
 }
 
-// Open modal when trigger is clicked
-openTrigger.addEventListener("click", openModal);
+// --- Open modal when "more" pill is clicked ---
+document.querySelector('.about-more').addEventListener('click', openModal);
 
 // Close modal when close button is clicked
 closeBtn.addEventListener("click", closeModal);
@@ -423,11 +412,9 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
 });
 
-// Recenter modal on resize/orientation change (iOS bars, keyboard)
+// Recenter modal on resize/orientation change
 window.addEventListener("resize", centerModal);
 window.addEventListener("orientationchange", centerModal);
-
-document.querySelector('.about-more').addEventListener('click', openModal);
 
 // Select the flip container
 const heroFlip = document.querySelector('.hero-icon-flip');
