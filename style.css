@@ -1281,3 +1281,21 @@ body:not(.light-mode) .modal-header {
     font-size: 0.95rem;
   }
 }
+
+.about-more {
+  display: inline-block;
+  margin-left: 0.3rem;        /* tiny spacing from the sentence */
+  padding: 0.1rem 0.4rem;     /* smaller vertical + horizontal padding */
+  font-size: 0.7rem;           /* slightly smaller text */
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(139, 139, 255, 0.15); /* very subtle background */
+  border-radius: 999px;        /* pill shape */
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.about-more:hover {
+  background: rgba(139, 139, 255, 0.25); /* subtle hover effect */
+  transform: scale(1.05);               /* slight zoom */
+}
