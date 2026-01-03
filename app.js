@@ -465,3 +465,52 @@ const renderProjects = (filteredProjects) => {
     });
   }, 150); // fade-out duration
 };
+
+// =========================
+// Theme-aware favicon
+// =========================
+const favicon = document.getElementById("favicon");
+const svgPath = "assets/images/gp5.svg";
+
+// Convert SVG text to base64 and optionally invert
+function svgToBase64(svgText, invert = false) {
+  if (invert) {
+    // Add filter for invert
+    svgText = svgText.replace("<svg", `<svg style="filter: invert(1)"`);
+  } else {
+    // Remove filter if exists
+    svgText = svgText.replace(`<svg style="filter: invert(1)"`, "<svg");
+  }
+  return "data:image/svg+xml;base64," + btoa(svgText);
+}
+
+// Fetch the SVG once and cache
+let cachedSvgText = null;
+async function fetchSvg() {
+  if (!cachedSvgText) {
+    cachedSvgText = await fetch(svgPath).then(r => r.text());
+  }
+  return cachedSvgText;
+}
+
+// Update favicon based on current mode
+async function updateFavicon() {
+  const svgText = await fetchSvg();
+
+  // Determine if light mode is active (manual or system)
+  const isLightMode = document.body.classList.contains("light-mode") ||
+                      (!document.body.classList.contains("dark-mode") &&
+                       window.matchMedia("(prefers-color-scheme: light)").matches);
+
+  favicon.href = svgToBase64(svgText, isLightMode);
+}
+
+// Initial update on load
+document.addEventListener("DOMContentLoaded", updateFavicon);
+
+// Observe class changes for manual theme toggle
+const observer = new MutationObserver(updateFavicon);
+observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
+// Listen to system theme changes
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateFavicon);
